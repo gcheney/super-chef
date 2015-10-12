@@ -1,39 +1,33 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using SuperChef.WebUI.Models;
+using SuperChef.WebUI.Identity;
 
 namespace SuperChef.WebUI.Controllers
 {
     [Authorize]
     public class ManageController : Controller
     {
-        private ApplicationSignInManager _signInManager;
-        private ApplicationUserManager _userManager;
+        private readonly ApplicationSignInManager _signInManager;
+        private readonly ApplicationUserManager _userManager;
+        private readonly IAuthenticationManager _authenticationManager;
 
-        public ManageController()
+        public ManageController(ApplicationUserManager userManager, ApplicationSignInManager signInManager,
+            IAuthenticationManager authenticationManager)
         {
-        }
-
-        public ManageController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
-        {
-            UserManager = userManager;
-            SignInManager = signInManager;
+            _userManager = userManager;
+            _signInManager = signInManager;
+            _authenticationManager = authenticationManager;
         }
 
         public ApplicationSignInManager SignInManager
         {
             get
             {
-                return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
-            }
-            private set 
-            { 
-                _signInManager = value; 
+                return _signInManager;
             }
         }
 
@@ -41,11 +35,15 @@ namespace SuperChef.WebUI.Controllers
         {
             get
             {
-                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+                return _userManager;
             }
-            private set
+        }
+
+        private IAuthenticationManager AuthenticationManager
+        {
+            get
             {
-                _userManager = value;
+                return _authenticationManager;
             }
         }
 
@@ -319,28 +317,9 @@ namespace SuperChef.WebUI.Controllers
             return result.Succeeded ? RedirectToAction("ManageLogins") : RedirectToAction("ManageLogins", new { Message = ManageMessageId.Error });
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && _userManager != null)
-            {
-                _userManager.Dispose();
-                _userManager = null;
-            }
-
-            base.Dispose(disposing);
-        }
-
-#region Helpers
+        #region Helpers
         // Used for XSRF protection when adding external logins
         private const string XsrfKey = "XsrfId";
-
-        private IAuthenticationManager AuthenticationManager
-        {
-            get
-            {
-                return HttpContext.GetOwinContext().Authentication;
-            }
-        }
 
         private void AddErrors(IdentityResult result)
         {
