@@ -28,6 +28,8 @@ namespace SuperChef.Data.Migrations
             //    );
             //
 
+            context.Configuration.LazyLoadingEnabled = true;
+
             if (!context.Roles.Any(r => r.Name == "AppAdmin"))
             {
                 var roleStore = new RoleStore<IdentityRole>(context);
@@ -46,13 +48,15 @@ namespace SuperChef.Data.Migrations
                 var userManager = new UserManager<AppUser>(userStore);
                 var user = new AppUser
                 {
-                    UserName = "test",
-                    Email = "test@test.com"
+                    UserName = "founder",
+                    Email = "founder@test.com"
                 };
 
                 userManager.Create(user, "!Password123");
                 userManager.AddToRole(user.Id, "AppAdmin");
             }
+
+            context.SaveChanges();
         }
     }
 }
