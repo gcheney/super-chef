@@ -43,13 +43,13 @@ namespace SuperChef.WebUI
 
             // TODO: Register your types here
             // container.RegisterType<IProductRepository, ProductRepository>();
-            container.RegisterType<ApplicationDbContext>();
-            container.RegisterType<ApplicationSignInManager>();
-            container.RegisterType<ApplicationUserManager>();
+            container.RegisterType<AppDbContext>();
+            container.RegisterType<AppSignInManager>();
+            container.RegisterType<AppUserManager>();
             container.RegisterType <IAuthenticationManager>(
                 new InjectionFactory(c => HttpContext.Current.GetOwinContext().Authentication));
-            container.RegisterType<IUserStore<ApplicationUser>, UserStore<ApplicationUser>>(
-                new InjectionConstructor(typeof(ApplicationDbContext)));
+            container.RegisterType<IUserStore<AppUser>, UserStore<AppUser>>(
+                new InjectionConstructor(typeof(AppDbContext)));
         }
     }
 }

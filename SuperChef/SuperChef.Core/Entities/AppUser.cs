@@ -5,9 +5,9 @@ using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace SuperChef.Core.Entities
 {
-    public class ApplicationUser : IdentityUser
+    public class AppUser : IdentityUser
     {
-        public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
+        public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<AppUser> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
             var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);

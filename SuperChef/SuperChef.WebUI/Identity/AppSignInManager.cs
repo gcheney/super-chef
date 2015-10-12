@@ -6,17 +6,17 @@ using SuperChef.Core.Entities;
 
 namespace SuperChef.WebUI.Identity
 {
-    public class ApplicationSignInManager : SignInManager<ApplicationUser, string>
+    public class AppSignInManager : SignInManager<AppUser, string>
     {
-        public ApplicationSignInManager(ApplicationUserManager userManager,
+        public AppSignInManager(AppUserManager userManager,
             IAuthenticationManager authenticationManager)
             : base(userManager, authenticationManager)
         {
         }
 
-        public override Task<ClaimsIdentity> CreateUserIdentityAsync(ApplicationUser user)
+        public override Task<ClaimsIdentity> CreateUserIdentityAsync(AppUser user)
         {
-            return user.GenerateUserIdentityAsync((ApplicationUserManager)UserManager);
+            return user.GenerateUserIdentityAsync((AppUserManager)UserManager);
         }
     }
 }

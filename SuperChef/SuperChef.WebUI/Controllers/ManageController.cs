@@ -11,11 +11,11 @@ namespace SuperChef.WebUI.Controllers
     [Authorize]
     public class ManageController : Controller
     {
-        private readonly ApplicationSignInManager _signInManager;
-        private readonly ApplicationUserManager _userManager;
+        private readonly AppSignInManager _signInManager;
+        private readonly AppUserManager _userManager;
         private readonly IAuthenticationManager _authenticationManager;
 
-        public ManageController(ApplicationUserManager userManager, ApplicationSignInManager signInManager,
+        public ManageController(AppUserManager userManager, AppSignInManager signInManager,
             IAuthenticationManager authenticationManager)
         {
             _userManager = userManager;
@@ -23,7 +23,7 @@ namespace SuperChef.WebUI.Controllers
             _authenticationManager = authenticationManager;
         }
 
-        public ApplicationSignInManager SignInManager
+        public AppSignInManager SignInManager
         {
             get
             {
@@ -31,7 +31,7 @@ namespace SuperChef.WebUI.Controllers
             }
         }
 
-        public ApplicationUserManager UserManager
+        public AppUserManager UserManager
         {
             get
             {

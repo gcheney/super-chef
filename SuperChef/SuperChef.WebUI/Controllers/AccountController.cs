@@ -14,31 +14,31 @@ namespace SuperChef.WebUI.Controllers
     [Authorize]
     public class AccountController : Controller
     {
-        private readonly ApplicationSignInManager signInManager;
-        private readonly ApplicationUserManager userManager;
-        private readonly IAuthenticationManager authenticationManager;
+        private readonly AppSignInManager _signInManager;
+        private readonly AppUserManager _userManager;
+        private readonly IAuthenticationManager _authenticationManager;
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, 
+        public AccountController(AppUserManager userManager, AppSignInManager signInManager, 
             IAuthenticationManager authenticationManager)
         {
-            this.userManager = userManager;
-            this.signInManager = signInManager;
-            this.authenticationManager = authenticationManager;
+            _userManager = userManager;
+            _signInManager = signInManager;
+            _authenticationManager = authenticationManager;
         }
 
-        public ApplicationSignInManager SignInManager
+        public AppSignInManager SignInManager
         {
             get
             {
-                return signInManager;
+                return _signInManager;
             }
         }
 
-        public ApplicationUserManager UserManager
+        public AppUserManager UserManager
         {
             get
             {
-                return userManager;
+                return _userManager;
             }
         }
 
@@ -46,7 +46,7 @@ namespace SuperChef.WebUI.Controllers
         {
             get
             {
-                return authenticationManager;
+                return _authenticationManager;
             }
         }
 
@@ -149,7 +149,7 @@ namespace SuperChef.WebUI.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new AppUser { UserName = model.Email, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -365,7 +365,7 @@ namespace SuperChef.WebUI.Controllers
                 {
                     return View("ExternalLoginFailure");
                 }
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new AppUser { UserName = model.Email, Email = model.Email };
                 var result = await UserManager.CreateAsync(user);
                 if (result.Succeeded)
                 {

@@ -3,16 +3,16 @@ using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace SuperChef.Data
 {
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+    public class AppDbContext : IdentityDbContext<AppUser>
     {
-        public ApplicationDbContext() 
+        public AppDbContext() 
             : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
 
-        public static ApplicationDbContext Create()
+        public static AppDbContext Create()
         {
-            return new ApplicationDbContext();
+            return new AppDbContext();
         }
     }
 }

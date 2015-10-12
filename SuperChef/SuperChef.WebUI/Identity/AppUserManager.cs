@@ -6,12 +6,12 @@ using SuperChef.Core.Entities;
 
 namespace SuperChef.WebUI.Identity
 {
-    public class ApplicationUserManager : UserManager<ApplicationUser>
+    public class AppUserManager : UserManager<AppUser>
     {
-        public ApplicationUserManager(IUserStore<ApplicationUser> store) : base(store)
+        public AppUserManager(IUserStore<AppUser> store) : base(store)
         {
             // Configure validation logic for usernames
-            this.UserValidator = new UserValidator<ApplicationUser>(this)
+            this.UserValidator = new UserValidator<AppUser>(this)
             {
                 AllowOnlyAlphanumericUserNames = false,
                 RequireUniqueEmail = true
@@ -35,12 +35,12 @@ namespace SuperChef.WebUI.Identity
             // Register two factor authentication providers. 
             //This application uses Phone and Emails as a step of receiving a code for verifying the user
             // You can write your own provider and plug it in here.
-            this.RegisterTwoFactorProvider("Phone Code", new PhoneNumberTokenProvider<ApplicationUser>
+            this.RegisterTwoFactorProvider("Phone Code", new PhoneNumberTokenProvider<AppUser>
             {
                 MessageFormat = "Your security code is {0}"
             });
 
-            this.RegisterTwoFactorProvider("Email Code", new EmailTokenProvider<ApplicationUser>
+            this.RegisterTwoFactorProvider("Email Code", new EmailTokenProvider<AppUser>
             {
                 Subject = "Security Code",
                 BodyFormat = "Your security code is {0}"
@@ -53,7 +53,7 @@ namespace SuperChef.WebUI.Identity
             {
                 IDataProtector dataProtector = dataProtectionProvider.Create("ASP.NET Identity");
 
-                this.UserTokenProvider = new DataProtectorTokenProvider<ApplicationUser>(dataProtector);
+                this.UserTokenProvider = new DataProtectorTokenProvider<AppUser>(dataProtector);
             }
         }
     }
