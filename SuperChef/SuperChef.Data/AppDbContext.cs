@@ -9,10 +9,5 @@ namespace SuperChef.Data
             : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
-
-        public static AppDbContext Create()
-        {
-            return new AppDbContext();
-        }
     }
 }
