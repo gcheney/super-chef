@@ -6,11 +6,14 @@ namespace SuperChef.Data.Migrations
     using System.Linq;
     using Core.Entities;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<SuperChef.Data.AppDbContext>
+    internal sealed class Configuration 
+        : DbMigrationsConfiguration<SuperChef.Data.AppDbContext>
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            //Set Migrations to behave like database initializer 
+            AutomaticMigrationsEnabled = true;
+            AutomaticMigrationDataLossAllowed = true;
         }
 
         protected override void Seed(SuperChef.Data.AppDbContext context)
@@ -27,8 +30,6 @@ namespace SuperChef.Data.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
-
-            context.Configuration.LazyLoadingEnabled = true;
 
             if (!context.Roles.Any(r => r.Name == "AppAdmin"))
             {
@@ -48,15 +49,16 @@ namespace SuperChef.Data.Migrations
                 var userManager = new UserManager<AppUser>(userStore);
                 var user = new AppUser
                 {
-                    UserName = "founder",
+                    UserName = "founder@test.com",
                     Email = "founder@test.com"
                 };
 
-                userManager.Create(user, "!Password123");
-                userManager.AddToRole(user.Id, "AppAdmin");
+                var result = userManager.Create(user, "!Password123");
+                if (result.Succeeded)
+                {
+                    userManager.AddToRole(user.Id, "AppAdmin");
+                }
             }
-
-            context.SaveChanges();
         }
     }
 }

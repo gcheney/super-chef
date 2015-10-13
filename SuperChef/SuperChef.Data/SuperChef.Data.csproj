@@ -58,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppDbContext.cs" />
+    <Compile Include="AppDbInitializer.cs" />
     <Compile Include="Migrations\201510121948560_Initial.cs" />
     <Compile Include="Migrations\201510121948560_Initial.Designer.cs">
       <DependentUpon>201510121948560_Initial.cs</DependentUpon>
