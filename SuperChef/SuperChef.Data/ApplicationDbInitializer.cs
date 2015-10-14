@@ -8,9 +8,10 @@ using SuperChef.Core.Entities;
 
 namespace SuperChef.Data
 {
-    public class AppDbInitializer : DropCreateDatabaseIfModelChanges<AppDbContext>
+    public class ApplicationDbInitializer 
+        : DropCreateDatabaseIfModelChanges<ApplicationDbContext>
     {
-        protected override void Seed(AppDbContext context)
+        protected override void Seed(ApplicationDbContext context)
         {
             if (!context.Roles.Any(r => r.Name == "AppAdmin"))
             {
@@ -26,9 +27,9 @@ namespace SuperChef.Data
 
             if (!context.Users.Any(u => u.UserName == "founder"))
             {
-                var userStore = new UserStore<AppUser>(context);
-                var userManager = new UserManager<AppUser>(userStore);
-                var user = new AppUser
+                var userStore = new UserStore<ApplicationUser>(context);
+                var userManager = new UserManager<ApplicationUser>(userStore);
+                var user = new ApplicationUser
                 {
                     UserName = "founder@test.com",
                     Email = "founder@test.com"

@@ -7,7 +7,7 @@ namespace SuperChef.Data.Migrations
     using Core.Entities;
 
     internal sealed class Configuration 
-        : DbMigrationsConfiguration<SuperChef.Data.AppDbContext>
+        : DbMigrationsConfiguration<ApplicationDbContext>
     {
         public Configuration()
         {
@@ -16,7 +16,7 @@ namespace SuperChef.Data.Migrations
             AutomaticMigrationDataLossAllowed = true;
         }
 
-        protected override void Seed(SuperChef.Data.AppDbContext context)
+        protected override void Seed(ApplicationDbContext context)
         {
             //  This method will be called after migrating to the latest version.
 
@@ -33,21 +33,18 @@ namespace SuperChef.Data.Migrations
 
             if (!context.Roles.Any(r => r.Name == "AppAdmin"))
             {
-                var roleStore = new RoleStore<IdentityRole>(context);
-                var roleManager = new RoleManager<IdentityRole>(roleStore);
-                var role = new IdentityRole
-                {
-                    Name = "AppAdmin"
-                };
+                var roleStore = new RoleStore<ApplicationRole>(context);
+                var roleManager = new RoleManager<ApplicationRole>(roleStore);
+                var role = new ApplicationRole { Name = "AppAdmin" };
 
                 roleManager.Create(role);
             }
 
             if (!context.Users.Any(u => u.UserName == "founder"))
             {
-                var userStore = new UserStore<AppUser>(context);
-                var userManager = new UserManager<AppUser>(userStore);
-                var user = new AppUser
+                var userStore = new UserStore<ApplicationUser>(context);
+                var userManager = new UserManager<ApplicationUser>(userStore);
+                var user = new ApplicationUser
                 {
                     UserName = "founder@test.com",
                     Email = "founder@test.com"

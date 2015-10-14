@@ -1,6 +1,4 @@
-﻿using SuperChef.Data;
-using System.Data.Entity;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 
@@ -10,7 +8,8 @@ namespace SuperChef.WebUI
     {
         protected void Application_Start()
         {
-            //Database.SetInitializer(new AppDbInitializer());
+            //Replaced with Migrations
+            //Database.SetInitializer(new ApplicationDbInitializer());
 
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
