@@ -46,9 +46,12 @@ namespace SuperChef.WebUI
             container.RegisterType<AppDbContext>();
             container.RegisterType<AppSignInManager>();
             container.RegisterType<AppUserManager>();
+            container.RegisterType<AppRoleManager>();
             container.RegisterType <IAuthenticationManager>(
                 new InjectionFactory(c => HttpContext.Current.GetOwinContext().Authentication));
             container.RegisterType<IUserStore<AppUser>, UserStore<AppUser>>(
+                new InjectionConstructor(typeof(AppDbContext)));
+            container.RegisterType<IRoleStore<AppRole, string>, RoleStore<AppRole>>(
                 new InjectionConstructor(typeof(AppDbContext)));
         }
     }

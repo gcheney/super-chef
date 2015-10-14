@@ -198,10 +198,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Identity\AppRoleManager.cs" />
     <Compile Include="Identity\AppSignInManager.cs" />
     <Compile Include="Identity\AppUserManager.cs" />
-    <Compile Include="Identity\EmailService.cs" />
-    <Compile Include="Identity\SmsService.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
