@@ -3,7 +3,6 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security.DataProtection;
 using SuperChef.Core.Entities;
-using SuperChef.Services.Identity;
 
 namespace SuperChef.WebUI.Identity
 {

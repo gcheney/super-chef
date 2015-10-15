@@ -8,6 +8,9 @@ namespace SuperChef.Data
         public ApplicationDbContext() 
             : base("DefaultConnection", throwIfV1Schema: false)
         {
+            //Replaced with Code-First Migrations
+            //System.Data.Entity.Database.SetInitializer(new ApplicationDbInitializer());
+            System.Data.Entity.Database.SetInitializer<ApplicationDbContext>(null);
         }
     }
 }

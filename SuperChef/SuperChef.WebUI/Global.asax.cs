@@ -8,9 +8,6 @@ namespace SuperChef.WebUI
     {
         protected void Application_Start()
         {
-            //Replaced with Migrations
-            //Database.SetInitializer(new ApplicationDbInitializer());
-
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);

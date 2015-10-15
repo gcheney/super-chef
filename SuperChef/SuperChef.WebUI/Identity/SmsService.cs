@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNet.Identity;
 using System.Threading.Tasks;
 
-namespace SuperChef.Services.Identity
+namespace SuperChef.WebUI.Identity
 {
     public class SmsService : IIdentityMessageService
     {
