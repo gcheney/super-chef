@@ -7,6 +7,8 @@ namespace SuperChef.Core.Entities
 {
     public class ApplicationUser : IdentityUser
     {
+        public virtual UserProfile UserProfile { get; set; }
+
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType

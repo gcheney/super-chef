@@ -6,8 +6,7 @@ namespace SuperChef.Data.Migrations
     using System.Linq;
     using Core.Entities;
 
-    internal sealed class Configuration 
-        : DbMigrationsConfiguration<ApplicationDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<ApplicationDbContext>
     {
         public Configuration()
         {
@@ -33,9 +32,9 @@ namespace SuperChef.Data.Migrations
 
             if (!context.Roles.Any(r => r.Name == "AppAdmin"))
             {
-                var roleStore = new RoleStore<ApplicationRole>(context);
-                var roleManager = new RoleManager<ApplicationRole>(roleStore);
-                var role = new ApplicationRole { Name = "AppAdmin" };
+                var roleStore = new RoleStore<IdentityRole>(context);
+                var roleManager = new RoleManager<IdentityRole>(roleStore);
+                var role = new IdentityRole { Name = "AppAdmin" };
 
                 roleManager.Create(role);
             }
@@ -47,7 +46,12 @@ namespace SuperChef.Data.Migrations
                 var user = new ApplicationUser
                 {
                     UserName = "founder@test.com",
-                    Email = "founder@test.com"
+                    Email = "founder@test.com",
+                    UserProfile = new UserProfile
+                    {
+                        DisplayName = "Glendon Cheney",
+                        Location = "Austin, TX"
+                    }
                 };
 
                 var result = userManager.Create(user, "!Password123");

@@ -59,9 +59,14 @@
   <ItemGroup>
     <Compile Include="ApplicationDbContext.cs" />
     <Compile Include="ApplicationDbInitializer.cs" />
+    <Compile Include="Configurations\UserProfileConfiguration.cs" />
     <Compile Include="Migrations\201510121948560_Initial.cs" />
     <Compile Include="Migrations\201510121948560_Initial.Designer.cs">
       <DependentUpon>201510121948560_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201510152326299_UserProfileInitial.cs" />
+    <Compile Include="Migrations\201510152326299_UserProfileInitial.Designer.cs">
+      <DependentUpon>201510152326299_UserProfileInitial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -80,7 +85,11 @@
     <EmbeddedResource Include="Migrations\201510121948560_Initial.resx">
       <DependentUpon>201510121948560_Initial.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201510152326299_UserProfileInitial.resx">
+      <DependentUpon>201510152326299_UserProfileInitial.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
