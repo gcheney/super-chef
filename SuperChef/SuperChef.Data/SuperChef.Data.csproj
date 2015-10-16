@@ -60,16 +60,16 @@
     <Compile Include="ApplicationDbContext.cs" />
     <Compile Include="ApplicationDbInitializer.cs" />
     <Compile Include="Configurations\UserProfileConfiguration.cs" />
-    <Compile Include="Migrations\201510121948560_Initial.cs" />
-    <Compile Include="Migrations\201510121948560_Initial.Designer.cs">
-      <DependentUpon>201510121948560_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201510152326299_UserProfileInitial.cs" />
-    <Compile Include="Migrations\201510152326299_UserProfileInitial.Designer.cs">
-      <DependentUpon>201510152326299_UserProfileInitial.cs</DependentUpon>
+    <Compile Include="DbContextFactory.cs" />
+    <Compile Include="IDbContextFactory.cs" />
+    <Compile Include="Migrations\201510160541528_Init.cs" />
+    <Compile Include="Migrations\201510160541528_Init.Designer.cs">
+      <DependentUpon>201510160541528_Init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\RepositoryBase.cs" />
+    <Compile Include="Repositories\UserRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -82,14 +82,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201510121948560_Initial.resx">
-      <DependentUpon>201510121948560_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201510152326299_UserProfileInitial.resx">
-      <DependentUpon>201510152326299_UserProfileInitial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201510160541528_Init.resx">
+      <DependentUpon>201510160541528_Init.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

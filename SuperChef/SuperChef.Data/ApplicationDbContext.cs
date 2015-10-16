@@ -20,13 +20,7 @@ namespace SuperChef.Data
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
-
             modelBuilder.Configurations.Add(new UserProfileConfiguration());
-
-            modelBuilder.Entity<ApplicationUser>()
-                .HasRequired(u => u.UserProfile)
-                .WithRequiredPrincipal(u => u.User);
 
             base.OnModelCreating(modelBuilder);
         }

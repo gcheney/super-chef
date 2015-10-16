@@ -19,7 +19,7 @@ namespace SuperChef.WebUI.Controllers
 
             var userId = User.Identity.GetUserId();
             var profile = db.UserProfiles
-                .Where(u => u.User.Id == userId)
+                .Where(u => u.UserId == userId)
                 .FirstOrDefault();
 
             return View(profile);

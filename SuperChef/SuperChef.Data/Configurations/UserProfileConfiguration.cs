@@ -8,15 +8,13 @@ namespace SuperChef.Data.Configurations
     {
         public UserProfileConfiguration()
         {
-            ToTable("UserProfiles");
-
-            HasKey(u => u.ProfileId)
-                .Property(u => u.ProfileId)
-                .HasColumnName("ProfileId")
+            HasKey(u => u.UserProfileId)
+                .Property(u => u.UserProfileId)
                 .IsRequired();
 
-            Property(p => p.CreationDate)
-                .IsRequired();
+            Property(u => u.FirstName).HasMaxLength(50);
+            Property(u => u.LastName).HasMaxLength(100);
+            Property(u => u.UserBio).IsMaxLength();
         }
     }
 }

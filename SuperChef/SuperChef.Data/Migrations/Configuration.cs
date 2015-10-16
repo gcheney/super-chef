@@ -1,21 +1,21 @@
 namespace SuperChef.Data.Migrations
 {
-    using Microsoft.AspNet.Identity;
-    using System.Data.Entity.Migrations;
     using Microsoft.AspNet.Identity.EntityFramework;
-    using System.Linq;
     using Core.Entities;
+    using System;
+    using System.Data.Entity.Migrations;
+    using System.Linq;
+    using Microsoft.AspNet.Identity;
+    using System.Data.Entity.Validation;
 
     internal sealed class Configuration : DbMigrationsConfiguration<ApplicationDbContext>
     {
         public Configuration()
         {
-            //Set Migrations to behave like database initializer 
-            AutomaticMigrationsEnabled = true;
-            AutomaticMigrationDataLossAllowed = true;
+            AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(ApplicationDbContext context)
+        protected override void Seed(SuperChef.Data.ApplicationDbContext context)
         {
             //  This method will be called after migrating to the latest version.
 
@@ -30,39 +30,53 @@ namespace SuperChef.Data.Migrations
             //    );
             //
 
-            if (!context.Roles.Any(r => r.Name == "AppAdmin"))
+            try
             {
-                var roleStore = new RoleStore<IdentityRole>(context);
-                var roleManager = new RoleManager<IdentityRole>(roleStore);
-                var role = new IdentityRole { Name = "AppAdmin" };
-
-                roleManager.Create(role);
-            }
-
-            if (!context.Users.Any(u => u.UserName == "founder"))
-            {
-                var userStore = new UserStore<ApplicationUser>(context);
-                var userManager = new UserManager<ApplicationUser>(userStore);
-                var user = new ApplicationUser
+                if (!context.Users.Any(u => u.UserName == "founder"))
                 {
-                    UserName = "founder@test.com",
-                    Email = "founder@test.com"
-                };
-                var userProfile = new UserProfile
-                {
-                    ProfileId = 1,
-                    User = user,
-                    DisplayName = user.UserName,
-                    Location = "Austin, TX"
-                };
+                    var userStore = new UserStore<ApplicationUser>(context);
+                    var userManager = new UserManager<ApplicationUser>(userStore);
+                    var user = new ApplicationUser
+                    {
+                        UserName = "founder@test.com",
+                        Email = "founder@test.com"
+                    };
 
-                user.UserProfile = userProfile;
-                var password = "!Password123";
-                var result = userManager.Create(user, password);
-                if (result.Succeeded)
-                {
-                    userManager.AddToRole(user.Id, "AppAdmin");
+                    var password = "!Password123";
+                    var result = userManager.Create(user, password);
+                    if (result.Succeeded)
+                    {
+                        userManager.AddToRole(user.Id, "AppAdmin");
+                    }
+
+                    var userProfile = new UserProfile
+                    {
+                        UserProfileId = 1,
+                        FirstName = "Glendon",
+                        LastName = "Cheney",
+                        UserBio = "Fuck You",
+                        UserId = user.Id
+                    };
+
+                    context.UserProfiles.Add(userProfile);
+                    context.SaveChanges();
                 }
+            }
+            catch (DbEntityValidationException e)
+            {
+                foreach (var eve in e.EntityValidationErrors)
+                {
+                    Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
+                        eve.Entry.Entity.GetType().Name, eve.Entry.State);
+                    foreach (var ve in eve.ValidationErrors)
+                    {
+                        Console.WriteLine("- Property: \"{0}\", Value: \"{1}\", Error: \"{2}\"",
+                            ve.PropertyName,
+                            eve.Entry.CurrentValues.GetValue<object>(ve.PropertyName),
+                            ve.ErrorMessage);
+                    }
+                }
+                throw;
             }
         }
     }
