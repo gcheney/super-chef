@@ -46,15 +46,19 @@ namespace SuperChef.Data.Migrations
                 var user = new ApplicationUser
                 {
                     UserName = "founder@test.com",
-                    Email = "founder@test.com",
-                    UserProfile = new UserProfile
-                    {
-                        DisplayName = "Glendon Cheney",
-                        Location = "Austin, TX"
-                    }
+                    Email = "founder@test.com"
+                };
+                var userProfile = new UserProfile
+                {
+                    ProfileId = 1,
+                    User = user,
+                    DisplayName = user.UserName,
+                    Location = "Austin, TX"
                 };
 
-                var result = userManager.Create(user, "!Password123");
+                user.UserProfile = userProfile;
+                var password = "!Password123";
+                var result = userManager.Create(user, password);
                 if (result.Succeeded)
                 {
                     userManager.AddToRole(user.Id, "AppAdmin");
