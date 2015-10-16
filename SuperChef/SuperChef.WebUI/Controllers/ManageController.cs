@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
-using SuperChef.WebUI.Models;
+using SuperChef.WebUI.ViewModels;
 using SuperChef.WebUI.Identity;
 
 namespace SuperChef.WebUI.Controllers
