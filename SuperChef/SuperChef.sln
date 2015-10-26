@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperChef.Tests", "SuperChe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperChef.Web", "SuperChef.WebUI\SuperChef.Web.csproj", "{DFFAEB5D-4FFE-4308-8506-B971C5072C48}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperChef.Core", "SuperChef.Core\SuperChef.Core.csproj", "{1100CE04-EF9F-472B-BC73-DECCBF76E077}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperChef.Data", "SuperChef.Data\SuperChef.Data.csproj", "{4798BA22-13A0-46A8-9754-ED657A7F7A09}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{DFFAEB5D-4FFE-4308-8506-B971C5072C48}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DFFAEB5D-4FFE-4308-8506-B971C5072C48}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DFFAEB5D-4FFE-4308-8506-B971C5072C48}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1100CE04-EF9F-472B-BC73-DECCBF76E077}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1100CE04-EF9F-472B-BC73-DECCBF76E077}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1100CE04-EF9F-472B-BC73-DECCBF76E077}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1100CE04-EF9F-472B-BC73-DECCBF76E077}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4798BA22-13A0-46A8-9754-ED657A7F7A09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4798BA22-13A0-46A8-9754-ED657A7F7A09}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4798BA22-13A0-46A8-9754-ED657A7F7A09}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4798BA22-13A0-46A8-9754-ED657A7F7A09}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
