@@ -5,11 +5,10 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.DataProtection;
 using Owin;
-using SuperChef.Core.Entities;
 using System.Web.Mvc;
-using SuperChef.WebUI.Identity;
+using SuperChef.Web.Identity.Models;
 
-namespace SuperChef.WebUI
+namespace SuperChef.Web
 {
     public partial class Startup
     {

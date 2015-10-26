@@ -5,11 +5,10 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using SuperChef.WebUI.ViewModels;
-using SuperChef.Core.Entities;
-using SuperChef.WebUI.Identity;
+using SuperChef.Web.Identity.Models;
+using SuperChef.Web.ViewModels;
 
-namespace SuperChef.WebUI.Controllers
+namespace SuperChef.Web.Controllers
 {
     [Authorize]
     public class AccountController : Controller

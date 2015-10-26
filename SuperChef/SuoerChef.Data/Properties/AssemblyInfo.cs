@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("SuperChef.Data")]
+[assembly: AssemblyTitle("SuoerChef.Data")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("SuperChef.Data")]
+[assembly: AssemblyProduct("SuoerChef.Data")]
 [assembly: AssemblyCopyright("Copyright ©  2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("4798ba22-13a0-46a8-9754-ed657a7f7a09")]
+[assembly: Guid("98bd5398-f5a0-4260-8baf-63b4151f8ca6")]
 
 // Version information for an assembly consists of the following four values:
 //

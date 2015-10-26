@@ -4,11 +4,10 @@ using Microsoft.Practices.Unity;
 using Microsoft.Owin.Security;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity;
-using SuperChef.Data;
-using SuperChef.Core.Entities;
-using SuperChef.WebUI.Identity;
+using SuperChef.Web.Identity.Models;
+using SuperChef.Web.Identity.Data;
 
-namespace SuperChef.WebUI
+namespace SuperChef.Web
 {
     /// <summary>
     /// Specifies the Unity configuration for the main container.
@@ -43,14 +42,17 @@ namespace SuperChef.WebUI
 
             // TODO: Register your types here
             // container.RegisterType<IProductRepository, ProductRepository>();
-            container.RegisterType<ApplicationDbContext>();
+
+            //Identity classes
+            container.RegisterType<AppIdentityDbContext>();
             container.RegisterType<ApplicationSignInManager>();
             container.RegisterType<ApplicationUserManager>();
 
             container.RegisterType <IAuthenticationManager>(
                 new InjectionFactory(c => HttpContext.Current.GetOwinContext().Authentication));
+
             container.RegisterType<IUserStore<ApplicationUser>, UserStore<ApplicationUser>>(
-                new InjectionConstructor(typeof(ApplicationDbContext)));
+                new InjectionConstructor(typeof(AppIdentityDbContext)));
         }
     }
 }

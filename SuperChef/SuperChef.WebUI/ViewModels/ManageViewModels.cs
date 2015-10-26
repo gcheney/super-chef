@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 
-namespace SuperChef.WebUI.ViewModels
+namespace SuperChef.Web.ViewModels
 {
     public class IndexViewModel
     {

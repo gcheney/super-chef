@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace SuperChef.WebUI.ViewModels
+namespace SuperChef.Web.ViewModels
 {
     public class ExternalLoginConfirmationViewModel
     {

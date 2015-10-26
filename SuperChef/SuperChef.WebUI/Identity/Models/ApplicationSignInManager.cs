@@ -2,9 +2,8 @@
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using SuperChef.Core.Entities;
 
-namespace SuperChef.WebUI.Identity
+namespace SuperChef.Web.Identity.Models
 {
     public class ApplicationSignInManager : SignInManager<ApplicationUser, string>
     {

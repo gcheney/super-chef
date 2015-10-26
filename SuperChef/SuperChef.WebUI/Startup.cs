@@ -1,8 +1,8 @@
 ﻿using Microsoft.Owin;
 using Owin;
 
-[assembly: OwinStartupAttribute(typeof(SuperChef.WebUI.Startup))]
-namespace SuperChef.WebUI
+[assembly: OwinStartupAttribute(typeof(SuperChef.Web.Startup))]
+namespace SuperChef.Web
 {
     public partial class Startup
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace SuperChef.WebUI.Controllers
+namespace SuperChef.Web.Controllers
 {
     [Authorize(Roles = "AppAdmin")]
     public class HomeController : Controller

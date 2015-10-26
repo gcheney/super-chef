@@ -2,9 +2,9 @@
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security.DataProtection;
-using SuperChef.Core.Entities;
+using SuperChef.Web.Identity.Services;
 
-namespace SuperChef.WebUI.Identity
+namespace SuperChef.Web.Identity.Models
 {
     public class ApplicationUserManager : UserManager<ApplicationUser>
     {

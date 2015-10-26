@@ -4,15 +4,18 @@ using System.Linq;
 using System.Data.Entity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity;
-using SuperChef.Core.Entities;
+using SuperChef.Web.Identity.Models;
 
-namespace SuperChef.Data
+namespace SuperChef.Web.Identity.Data
 {
-    public class ApplicationDbInitializer 
-        : DropCreateDatabaseIfModelChanges<ApplicationDbContext>
+    public class AppIdentityDbInitializer 
+        : DropCreateDatabaseIfModelChanges<AppIdentityDbContext>
     {
-        protected override void Seed(ApplicationDbContext context)
+        protected override void Seed(AppIdentityDbContext context)
         {
+            var roleResult = new IdentityResult();
+            var userResult = new IdentityResult();
+
             if (!context.Roles.Any(r => r.Name == "AppAdmin"))
             {
                 var roleStore = new RoleStore<IdentityRole>(context);
@@ -22,7 +25,7 @@ namespace SuperChef.Data
                     Name = "AppAdmin"
                 };
 
-                roleManager.Create(role);
+                roleResult = roleManager.Create(role);
             }
 
             if (!context.Users.Any(u => u.UserName == "founder"))
@@ -35,12 +38,15 @@ namespace SuperChef.Data
                     Email = "founder@test.com"
                 };
 
-                var result = userManager.Create(user, "!Password123");
-                if (result.Succeeded)
+                userResult = userManager.Create(user, "!Password123");
+
+                if (userResult.Succeeded && roleResult.Succeeded)
                 {
                     userManager.AddToRole(user.Id, "AppAdmin");
                 }
             }
+
+            base.Seed(context);
         }
     }
 }
