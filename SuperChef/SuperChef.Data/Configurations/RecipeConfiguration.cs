@@ -50,6 +50,18 @@ namespace SuperChef.Data.Configurations
                 .HasColumnType("nvarchar")
                 .IsOptional();
 
+            Property(r => r.CombinedDirections)
+                .HasColumnName("Directions")
+                .HasColumnType("nvarchar")
+                .IsMaxLength()
+                .IsRequired();
+
+            Property(r => r.CombinedIngredients)
+                .HasColumnName("Ingredients")
+                .HasColumnType("nvarchar")
+                .IsMaxLength()
+                .IsRequired();
+
             HasRequired(r => r.Category)
                 .WithMany(c => c.Recipes)
                 .HasForeignKey(r => r.CategoryId)
@@ -60,14 +72,18 @@ namespace SuperChef.Data.Configurations
                 .HasForeignKey(r => r.CuisineId)
                 .WillCascadeOnDelete(false);
 
-            HasRequired(r => r.Chef)
+            HasRequired(r => r.CreatedBy)
                 .WithMany(c => c.Recipes)
-                .HasForeignKey(r => r.ChefId)
+                .HasForeignKey(r => r.CreatedById)
                 .WillCascadeOnDelete(true);
 
             HasMany(r => r.Comments)
                 .WithRequired(c => c.Recipe)
                 .HasForeignKey(c => c.RecipeId);
+
+            HasMany(r => r.RecipeImages)
+                .WithRequired(r => r.Recipe)
+                .HasForeignKey(r => r.RecipeId);
         }
     }
 }

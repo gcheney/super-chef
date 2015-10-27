@@ -50,17 +50,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppDbContext.cs" />
+    <Compile Include="Configurations\AvatarImageConfiguration.cs" />
     <Compile Include="Configurations\CategoryConfiguration.cs" />
     <Compile Include="Configurations\ChefConfiguration.cs" />
     <Compile Include="Configurations\CommentConfiguration.cs" />
     <Compile Include="Configurations\CuisineConfiguration.cs" />
     <Compile Include="Configurations\RecipeConfiguration.cs" />
+    <Compile Include="Configurations\RecipeImageConfiguration.cs" />
     <Compile Include="Infrastructure\DbFactory.cs" />
     <Compile Include="Infrastructure\Disposable.cs" />
     <Compile Include="Infrastructure\IDbFactory.cs" />
-    <Compile Include="Migrations\201510270707117_Initial.cs" />
-    <Compile Include="Migrations\201510270707117_Initial.Designer.cs">
-      <DependentUpon>201510270707117_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\201510271915252_Initial.cs" />
+    <Compile Include="Migrations\201510271915252_Initial.Designer.cs">
+      <DependentUpon>201510271915252_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\MigrationsContextFactory.cs" />
@@ -84,8 +86,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201510270707117_Initial.resx">
-      <DependentUpon>201510270707117_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201510271915252_Initial.resx">
+      <DependentUpon>201510271915252_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

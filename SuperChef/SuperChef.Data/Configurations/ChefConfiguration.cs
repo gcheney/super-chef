@@ -44,9 +44,13 @@ namespace SuperChef.Data.Configurations
                 .IsMaxLength()
                 .IsRequired();
 
+            HasOptional(c => c.AvatarImage)
+                .WithRequired(a => a.Chef)
+                .WillCascadeOnDelete(true);
+
             HasMany(c => c.Recipes)
-                .WithRequired(r => r.Chef)
-                .HasForeignKey(r => r.ChefId);
+                .WithRequired(r => r.CreatedBy)
+                .HasForeignKey(r => r.CreatedById);
 
             HasMany(c => c.Comments)
                 .WithRequired(c => c.Chef)

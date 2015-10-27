@@ -6,11 +6,6 @@ namespace SuperChef.Core.Entities
 {
     public class Recipe : Entity
     {
-        #region Private Fields
-        private ICollection<string> _ingredients;
-        private ICollection<string> _directions;
-        #endregion
-
         #region Properties
         public string Name { get; set; }
         public int Servings { get; set; }
@@ -19,19 +14,17 @@ namespace SuperChef.Core.Entities
         public int Upvotes { get; set; }
         public DateTime DateCreated { get; set; }
         public DateTime? DateEdited { get; set; }
-        #endregion
 
-        #region Field Initialization
-        public ICollection<string> Ingredients
+        public string CombinedIngredients
         {
-            get { return _ingredients ?? (_ingredients = new List<string>()); }
-            set { _ingredients = value; }
+            get { return string.Join(",", _ingredients); }
+            set { _ingredients = value.Split(',').Select(s => s.Trim()).ToList(); }
         }
 
-        public ICollection<string> Directions
+        public string CombinedDirections
         {
-            get { return _directions ?? (_directions = new List<string>()); }
-            set { _directions = value; }
+            get { return string.Join(",", _directions); }
+            set { _directions = value.Split(',').Select(s => s.Trim()).ToList(); }
         }
         #endregion
 
@@ -42,10 +35,29 @@ namespace SuperChef.Core.Entities
         public int CuisineId { get; set; }
         public virtual Cuisine Cuisine { get; set; }
 
-        public int ChefId { get; set; }
-        public virtual Chef Chef { get; set; }
+        public int CreatedById { get; set; }
+        public virtual Chef CreatedBy { get; set; }
 
         public virtual ICollection<Comment> Comments { get; set; }
+        public virtual ICollection<RecipeImage> RecipeImages { get; set; }
+        #endregion
+
+        #region Private Fields
+        private List<string> _ingredients;
+
+        public List<string> Ingredients
+        {
+            get { return _ingredients ?? (_ingredients = new List<string>()); }
+            set { _ingredients = value; }
+        }
+
+        private List<string> _directions;
+
+        public List<string> Directions
+        {
+            get { return _directions ?? (_directions = new List<string>()); }
+            set { _directions = value; }
+        }
         #endregion
     }
 

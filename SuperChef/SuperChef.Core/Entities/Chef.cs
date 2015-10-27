@@ -10,8 +10,10 @@ namespace SuperChef.Core.Entities
         public int Age { get; set; }
         public string About { get; set; }
 
+        public int AvatarImageId { get; set; }
+        public virtual AvatarImage AvatarImage { get; set; }
+
         public virtual ICollection<Comment> Comments { get; set; }
         public virtual ICollection<Recipe> Recipes { get; set; }
-        public virtual ICollection<Recipe> Favorites { get; set; }
     }
 }
