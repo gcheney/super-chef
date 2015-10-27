@@ -61,6 +61,8 @@ namespace SuperChef.Data.Migrations
                         Upvotes = c.Int(nullable: false),
                         DateCreated = c.DateTime(nullable: false, storeType: "date"),
                         DateEdited = c.DateTime(storeType: "date"),
+                        Ingredients = c.String(nullable: false, maxLength: 4000),
+                        Directions = c.String(nullable: false, maxLength: 4000),
                         CategoryId = c.Int(nullable: false),
                         CuisineId = c.Int(nullable: false),
                         CreatedById = c.Int(nullable: false),

@@ -13,7 +13,7 @@ namespace SuperChef.Data.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201510271915252_Initial"; }
+            get { return "201510272122477_Initial"; }
         }
         
         string IMigrationMetadata.Source
