@@ -6,8 +6,8 @@ namespace SuperChef.Data.Repositories
 {
     public class CommentRepository : Repository<Comment, int>, ICommentRepository
     {
-        public CommentRepository(IDbFactory factory)
-            : base(factory)
+        public CommentRepository(IDbFactory dbFactory)
+            : base(dbFactory)
         {
 
         }

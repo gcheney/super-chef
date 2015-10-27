@@ -9,8 +9,8 @@ namespace SuperChef.Data.Repositories
 {
     class ChefRepository : Repository<Chef, int>, IChefRepository
     {
-        public ChefRepository(IDbFactory factory)
-            : base(factory)
+        public ChefRepository(IDbFactory dbFactory)
+            : base(dbFactory)
         {
         }
 

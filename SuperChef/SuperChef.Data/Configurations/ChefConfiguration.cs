@@ -18,11 +18,13 @@ namespace SuperChef.Data.Configurations
             Property(c => c.Name)
                 .HasColumnName("Name")
                 .HasColumnType("nvarchar")
+                .HasMaxLength(100)
                 .IsRequired();
 
             Property(c => c.Location)
                 .HasColumnName("Location")
                 .HasColumnType("nvarchar")
+                .HasMaxLength(50)
                 .IsOptional();
 
             Property(c => c.Age)
@@ -33,7 +35,14 @@ namespace SuperChef.Data.Configurations
             Property(c => c.About)
                 .HasColumnName("About")
                 .HasColumnType("nvarchar")
+                .HasMaxLength(1000)
                 .IsOptional();
+
+            Property(c => c.UserId)
+                .HasColumnName("UserId")
+                .HasColumnType("nvarchar")
+                .IsMaxLength()
+                .IsRequired();
 
             HasMany(c => c.Recipes)
                 .WithRequired(r => r.Chef)

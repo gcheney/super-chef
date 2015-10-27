@@ -9,8 +9,8 @@ namespace SuperChef.Data.Repositories
 {
     public class CuisineRepository : Repository<Cuisine, int>, ICuisineRepository
     {
-        public CuisineRepository(IDbFactory factory)
-            : base(factory)
+        public CuisineRepository(IDbFactory dbFactory)
+            : base(dbFactory)
         {
         }
 
