@@ -2,29 +2,14 @@
 
 namespace SuperChef.Core.Entities
 {
-    public class Chef : BaseEntity
+    public class Chef : Entity
     {
-        #region Fields
-        private ICollection<Comment> _comments;
-        private ICollection<Recipe> _recipes;
-        #endregion
-
-        #region Properties
         public string Name { get; set; }
-        #endregion
+        public string Location { get; set; }
+        public int Age { get; set; }
+        public string About { get; set; }
 
-        #region Navigation Properties
-        public virtual ICollection<Comment> Comments
-        {
-            get { return _comments ?? (_comments = new List<Comment>()); }
-            set { _comments = value; }
-        }
-
-        public virtual ICollection<Recipe> Recipes
-        {
-            get { return _recipes ?? (_recipes = new List<Recipe>()); }
-            set { _recipes = value; }
-        }
-        #endregion
+        public virtual ICollection<Comment> Comments { get; set; }
+        public virtual ICollection<Recipe> Recipes { get; set; }
     }
 }

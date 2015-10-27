@@ -6,7 +6,7 @@ namespace SuperChef.Web.Identity.Data
     public class AppIdentityDbContext : IdentityDbContext<ApplicationUser>
     {
         public AppIdentityDbContext() 
-            : base("SuperChef", throwIfV1Schema: false)
+            : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
     }

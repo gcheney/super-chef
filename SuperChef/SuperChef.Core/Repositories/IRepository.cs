@@ -2,22 +2,23 @@
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
+using SuperChef.Core.Entities;
 
 namespace SuperChef.Core.Repositories
 {
-    public interface IRepository<TEntity>
+    public interface IRepository<TEntity, in TKey> where  TEntity : IEntity<TKey>
     {
-        IEnumerable<TEntity> FindAll(Expression<Func<TEntity, bool>> filter);
-        TEntity FindById(object id);
-
-        IEnumerable<TEntity> GetAll();
-        Task<IEnumerable<TEntity>> GetAllAsync();
-
-        IEnumerable<TEntity> PageAll(int skip, int take);
-        Task<IEnumerable<TEntity>> PageAllAsync(int skip, int take);
+        TEntity FindById(TKey id);
+        TEntity Find(Expression<Func<TEntity, bool>> expression);
 
         void Insert(TEntity entity);
         void Update(TEntity entity);
         void Delete(TEntity entity);
+
+        IEnumerable<TEntity> GetAll();
+        IEnumerable<TEntity> GetMany(Expression<Func<TEntity, bool>> expression);
+
+        Task<List<TEntity>> GetAllAsync();
+        Task<List<TEntity>> GetManyAsync(Expression<Func<TEntity, bool>> expression);
     }
 }

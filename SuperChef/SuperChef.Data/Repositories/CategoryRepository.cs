@@ -1,0 +1,27 @@
+﻿using System.Data.Entity;
+using System.Linq;
+using System.Threading.Tasks;
+using SuperChef.Core.Entities;
+using SuperChef.Core.Repositories;
+using SuperChef.Data.Infrastructure;
+
+namespace SuperChef.Data.Repositories
+{
+    public class CategoryRepository : Repository<Category, int>, ICategoryRepository
+    {
+        public CategoryRepository(IDbFactory factory)
+            : base(factory)
+        {
+        }
+
+        public Category FindByName(string categoryName)
+        {
+            return Set.FirstOrDefault(c => c.Name == categoryName);
+        }
+
+        public Task<Category> FindByNameAsync(string categoryName)
+        {
+            return Set.FirstOrDefaultAsync(c => c.Name == categoryName);
+        }
+    }
+}

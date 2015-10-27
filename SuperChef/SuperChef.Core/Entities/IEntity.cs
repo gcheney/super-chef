@@ -1,7 +1,7 @@
 ﻿
 namespace SuperChef.Core.Entities
 {
-    interface IEntity<T>
+    public interface IEntity<T>
     {
         T Id { get; set; }
     }

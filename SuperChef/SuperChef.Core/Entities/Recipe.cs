@@ -4,25 +4,24 @@ using System.Linq;
 
 namespace SuperChef.Core.Entities
 {
-    public class Recipe : BaseEntity
+    public class Recipe : Entity
     {
-        #region Fields
+        #region Private Fields
         private ICollection<string> _ingredients;
         private ICollection<string> _directions;
-        private ICollection<string> _tags;
-        private ICollection<Comment> _comments;
         #endregion
 
         #region Properties
-        public string Title { get; set; }
+        public string Name { get; set; }
         public int Servings { get; set; }
         public string PreparationTime { get; set; }
         public string Description { get; set; }
-        public DateTime DateCreated { get; set; }
         public int Upvotes { get; set; }
+        public DateTime DateCreated { get; set; }
+        public DateTime? DateEdited { get; set; }
         #endregion
 
-        #region Field initialization
+        #region Field Initialization
         public ICollection<string> Ingredients
         {
             get { return _ingredients ?? (_ingredients = new List<string>()); }
@@ -33,12 +32,6 @@ namespace SuperChef.Core.Entities
         {
             get { return _directions ?? (_directions = new List<string>()); }
             set { _directions = value; }
-        }
-
-        public ICollection<string> Tags
-        {
-            get { return _tags ?? (_tags = new List<string>()); }
-            set { _tags = value; }
         }
         #endregion
 
@@ -52,22 +45,7 @@ namespace SuperChef.Core.Entities
         public int ChefId { get; set; }
         public virtual Chef Chef { get; set; }
 
-        public virtual ICollection<Comment> Comments
-        {
-            get { return _comments ?? (_comments = new List<Comment>()); }
-            set { _comments = value; }
-        }
-        #endregion
-
-        #region Methods
-        public string CombinedTags
-        {
-            get { return string.Join(",", _tags); }
-            set
-            {
-                _tags = value.Split(',').Select(s => s.Trim()).ToList();
-            }
-        }
+        public virtual ICollection<Comment> Comments { get; set; }
         #endregion
     }
 

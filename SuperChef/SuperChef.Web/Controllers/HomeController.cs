@@ -6,7 +6,6 @@ using System.Web.Mvc;
 
 namespace SuperChef.Web.Controllers
 {
-    [Authorize(Roles = "AppAdmin")]
     public class HomeController : Controller
     {
         public ActionResult Index()

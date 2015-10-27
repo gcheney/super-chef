@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperChef.Services", "Super
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperChef.Tests", "SuperChef.Tests\SuperChef.Tests.csproj", "{0773B923-1394-484C-AF1F-920DECE4F363}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperChef.Web", "SuperChef.WebUI\SuperChef.Web.csproj", "{DFFAEB5D-4FFE-4308-8506-B971C5072C48}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperChef.Web", "SuperChef.Web\SuperChef.Web.csproj", "{DFFAEB5D-4FFE-4308-8506-B971C5072C48}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperChef.Core", "SuperChef.Core\SuperChef.Core.csproj", "{1100CE04-EF9F-472B-BC73-DECCBF76E077}"
 EndProject

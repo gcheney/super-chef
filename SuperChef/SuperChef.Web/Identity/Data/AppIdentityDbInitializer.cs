@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Data.Entity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity;
@@ -28,14 +26,14 @@ namespace SuperChef.Web.Identity.Data
                 roleResult = roleManager.Create(role);
             }
 
-            if (!context.Users.Any(u => u.UserName == "founder"))
+            if (!context.Users.Any(u => u.Email == "admin@test.com"))
             {
                 var userStore = new UserStore<ApplicationUser>(context);
                 var userManager = new UserManager<ApplicationUser>(userStore);
                 var user = new ApplicationUser
                 {
-                    UserName = "founder@test.com",
-                    Email = "founder@test.com"
+                    UserName = "Admin",
+                    Email = "admin@test.com"
                 };
 
                 userResult = userManager.Create(user, "!Password123");
