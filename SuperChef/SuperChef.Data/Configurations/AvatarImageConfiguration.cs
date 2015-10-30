@@ -3,7 +3,7 @@ using System.Data.Entity.ModelConfiguration;
 
 namespace SuperChef.Data.Configurations
 {
-    internal class AvatarImageConfiguration : EntityTypeConfiguration<AvatarImage>
+    internal class AvatarImageConfiguration : EntityTypeConfiguration<Avatar>
     {
         internal AvatarImageConfiguration()
         {

@@ -9,7 +9,6 @@ namespace SuperChef.Data.Repositories
         public CommentRepository(IDbFactory dbFactory)
             : base(dbFactory)
         {
-
         }
 
     }

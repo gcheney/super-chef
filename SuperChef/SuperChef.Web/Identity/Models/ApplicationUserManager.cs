@@ -12,10 +12,10 @@ namespace SuperChef.Web.Identity.Models
             : base(userStore)
         {
             // Configure validation logic for usernames
-            this.UserValidator = new UserValidator<ApplicationUser>(this)
+            this.UserValidator = new ApplicationUserValidator(this)
             {
                 AllowOnlyAlphanumericUserNames = false,
-                RequireUniqueEmail = true
+                RequireUniqueEmail = true               
             };
 
             // Configure validation logic for passwords

@@ -13,15 +13,5 @@ namespace SuperChef.Data.Repositories
             : base(dbFactory)
         {
         }
-
-        public Recipe FindByName(string recipeName)
-        {
-            return Set.FirstOrDefault(r => r.Name == recipeName);
-        }
-
-        public Task<Recipe> FindByNameAsync(string recipeName)
-        {
-            return Set.FirstOrDefaultAsync(r => r.Name == recipeName);
-        }
     }
 }

@@ -11,7 +11,7 @@ namespace SuperChef.Core.Entities
         public string About { get; set; }
 
         public int AvatarImageId { get; set; }
-        public virtual AvatarImage AvatarImage { get; set; }
+        public virtual Avatar AvatarImage { get; set; }
 
         public virtual ICollection<Comment> Comments { get; set; }
         public virtual ICollection<Recipe> Recipes { get; set; }

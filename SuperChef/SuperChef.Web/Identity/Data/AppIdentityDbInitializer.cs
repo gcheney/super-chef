@@ -11,6 +11,12 @@ namespace SuperChef.Web.Identity.Data
     {
         protected override void Seed(AppIdentityDbContext context)
         {
+            CreateAdminUser(context);
+            base.Seed(context);
+        }
+
+        private void CreateAdminUser(AppIdentityDbContext context)
+        {
             var roleResult = new IdentityResult();
             var userResult = new IdentityResult();
 
@@ -44,7 +50,6 @@ namespace SuperChef.Web.Identity.Data
                 }
             }
 
-            base.Seed(context);
         }
     }
 }

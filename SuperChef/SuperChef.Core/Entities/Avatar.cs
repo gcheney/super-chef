@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SuperChef.Core.Entities
 {
-    public class AvatarImage : Image
+    public class Avatar : Image
     {
         public int ChefId { get; set; }
         public virtual Chef Chef { get; set; }

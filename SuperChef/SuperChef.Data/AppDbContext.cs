@@ -18,7 +18,7 @@ namespace SuperChef.Data
         public DbSet<Category> Categories { get; set; }
         public DbSet<Cuisine> Cuisines { get; set; }
         public DbSet<Comment> Comments { get; set; }
-        public DbSet<AvatarImage> AvatarImages { get; set; }
+        public DbSet<Avatar> AvatarImages { get; set; }
         public DbSet<RecipeImage> RecipeImages { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

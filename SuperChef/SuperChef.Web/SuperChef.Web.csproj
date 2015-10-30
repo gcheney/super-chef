@@ -203,6 +203,7 @@
     <Compile Include="Identity\Models\ApplicationSignInManager.cs" />
     <Compile Include="Identity\Models\ApplicationUser.cs" />
     <Compile Include="Identity\Models\ApplicationUserManager.cs" />
+    <Compile Include="Identity\Models\ApplicationUserValidator.cs" />
     <Compile Include="Identity\Services\EmailService.cs" />
     <Compile Include="Identity\Services\SmsService.cs" />
     <Compile Include="ViewModels\AccountViewModels.cs" />
