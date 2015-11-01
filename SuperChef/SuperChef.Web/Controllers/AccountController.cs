@@ -7,6 +7,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using SuperChef.Web.Identity.Models;
 using SuperChef.Web.ViewModels;
+using SuperChef.Core.Services;
 
 namespace SuperChef.Web.Controllers
 {
@@ -16,14 +17,17 @@ namespace SuperChef.Web.Controllers
         private readonly ApplicationSignInManager _signInManager;
         private readonly ApplicationUserManager _userManager;
         private readonly IAuthenticationManager _authenticationManager;
+        private readonly IChefService _chefService;
 
         public AccountController(ApplicationUserManager userManager, 
             ApplicationSignInManager signInManager, 
-            IAuthenticationManager authenticationManager)
+            IAuthenticationManager authenticationManager,
+            IChefService chefService)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _authenticationManager = authenticationManager;
+            _chefService = chefService;
         }
 
         public ApplicationSignInManager SignInManager
@@ -162,6 +166,9 @@ namespace SuperChef.Web.Controllers
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+
+                    //create a new chef
+                    _chefService.CreateChef(user.Id, user.UserName);
 
                     return RedirectToAction("Index", "Home");
                 }

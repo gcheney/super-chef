@@ -4,8 +4,6 @@ using System.Data.Entity;
 using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Threading;
-using System.Threading.Tasks;
 
 using SuperChef.Core.Entities;
 using SuperChef.Core.Repositories;
@@ -32,7 +30,10 @@ namespace SuperChef.Data.Repositories
 
         public Repository(IDbFactory dbFactory)
         {
-            Contract.Requires<ArgumentNullException>(dbFactory != null);
+            if (dbFactory == null)
+            {
+                throw new ArgumentNullException("dbFactory");
+            }
             _dbFactory = dbFactory;
         }
 
@@ -79,7 +80,7 @@ namespace SuperChef.Data.Repositories
             return Set.Find(id);
         }
 
-        public virtual void Insert(TEntity entity)
+        public virtual void Add(TEntity entity)
         {
             Set.Add(entity);
         }

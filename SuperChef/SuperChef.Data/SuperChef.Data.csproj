@@ -62,10 +62,13 @@
     <Compile Include="Infrastructure\Disposable.cs" />
     <Compile Include="Infrastructure\IConnectionFactory.cs" />
     <Compile Include="Infrastructure\IDbFactory.cs" />
-    <Compile Include="Infrastructure\IUnitOfWork.cs" />
     <Compile Include="Migrations\201510272122477_Initial.cs" />
     <Compile Include="Migrations\201510272122477_Initial.Designer.cs">
       <DependentUpon>201510272122477_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201511012320387_FirstUpdate.cs" />
+    <Compile Include="Migrations\201511012320387_FirstUpdate.Designer.cs">
+      <DependentUpon>201511012320387_FirstUpdate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\MigrationsContextFactory.cs" />
@@ -93,6 +96,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201510272122477_Initial.resx">
       <DependentUpon>201510272122477_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201511012320387_FirstUpdate.resx">
+      <DependentUpon>201511012320387_FirstUpdate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

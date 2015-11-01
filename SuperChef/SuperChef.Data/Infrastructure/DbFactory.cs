@@ -1,4 +1,6 @@
 ﻿
+using System;
+
 namespace SuperChef.Data.Infrastructure
 {
     public class DbFactory : Disposable, IDbFactory
@@ -7,6 +9,10 @@ namespace SuperChef.Data.Infrastructure
 
         public DbFactory(IConnectionFactory connectionFactory)
         {
+            if (connectionFactory == null)
+            {
+                throw new ArgumentNullException("connectionFactory");
+            }
             var connectionString = connectionFactory.GetConnectionString();
             _context = new AppDbContext(connectionString);
         }

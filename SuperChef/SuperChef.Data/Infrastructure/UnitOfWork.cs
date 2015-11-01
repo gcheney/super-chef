@@ -1,6 +1,5 @@
-﻿using System;
-using System.Diagnostics.Contracts;
-using System.Threading.Tasks;
+﻿using SuperChef.Core.Infrastructure;
+using System;
 
 namespace SuperChef.Data.Infrastructure
 {
@@ -11,7 +10,10 @@ namespace SuperChef.Data.Infrastructure
 
         public UnitOfWork(IDbFactory dbFactory)
         {
-            Contract.Requires<ArgumentNullException>(dbFactory != null);
+            if (dbFactory == null)
+            {
+                throw new ArgumentNullException("dbFactory");
+            }
             _dbFactory = dbFactory;
         }
 
@@ -23,11 +25,6 @@ namespace SuperChef.Data.Infrastructure
         public void Commit()
         {
             Context.SaveChanges();
-        }
-
-        public async Task<int> CommitAsync()
-        {
-            return await Context.SaveChangesAsync();
         }
     }
 }

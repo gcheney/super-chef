@@ -50,6 +50,7 @@
     <Compile Include="Entities\Image.cs" />
     <Compile Include="Entities\Recipe.cs" />
     <Compile Include="Entities\RecipeImage.cs" />
+    <Compile Include="Infrastructure\IUnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\IAvatarRepository.cs" />
     <Compile Include="Repositories\ICategoryRepository.cs" />

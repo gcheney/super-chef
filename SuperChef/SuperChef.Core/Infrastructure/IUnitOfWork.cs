@@ -1,10 +1,9 @@
 ﻿using System.Threading.Tasks;
 
-namespace SuperChef.Data.Infrastructure
+namespace SuperChef.Core.Infrastructure
 {
     public interface IUnitOfWork
     {
         void Commit();
-        Task<int> CommitAsync();
     }
 }
