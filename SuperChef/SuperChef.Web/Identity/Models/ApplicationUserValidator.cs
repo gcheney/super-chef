@@ -1,8 +1,5 @@
 ﻿using Microsoft.AspNet.Identity;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Threading.Tasks;
 
 namespace SuperChef.Web.Identity.Models
@@ -24,7 +21,7 @@ namespace SuperChef.Web.Identity.Models
             if (_manager.FindByName(user.UserName) != null)
             {
                 var errors = result.Errors.ToList();
-                errors.Add("Please choose a new user name.");
+                errors.Add("Please choose a different user name.");
                 result = new IdentityResult(errors);
             }
             return result;

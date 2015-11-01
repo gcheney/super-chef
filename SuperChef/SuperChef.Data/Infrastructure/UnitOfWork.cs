@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Diagnostics.Contracts;
 using System.Threading.Tasks;
-using SuperChef.Core;
-using SuperChef.Data.Infrastructure;
 
-namespace SuperChef.Data
+namespace SuperChef.Data.Infrastructure
 {
     public class UnitOfWork : IUnitOfWork
     {

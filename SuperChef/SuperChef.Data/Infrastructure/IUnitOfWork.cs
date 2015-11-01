@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace SuperChef.Core
+namespace SuperChef.Data.Infrastructure
 {
     public interface IUnitOfWork
     {

@@ -8,7 +8,8 @@ namespace SuperChef.Web.Identity.Models
 {
     public class ApplicationUserManager : UserManager<ApplicationUser>
     {
-        public ApplicationUserManager(IUserStore<ApplicationUser> userStore) 
+        public ApplicationUserManager(IUserStore<ApplicationUser> userStore,
+            IdentityFactoryOptions<ApplicationUserManager> options) 
             : base(userStore)
         {
             // Configure validation logic for usernames
@@ -49,12 +50,12 @@ namespace SuperChef.Web.Identity.Models
 
             this.EmailService = new EmailService();
             this.SmsService = new SmsService();
-            var dataProtectionProvider = Startup.DataProtectionProvider;
+
+            var dataProtectionProvider = options.DataProtectionProvider;
             if (dataProtectionProvider != null)
             {
-                IDataProtector dataProtector = dataProtectionProvider.Create("ASP.NET Identity");
-
-                this.UserTokenProvider = new DataProtectorTokenProvider<ApplicationUser>(dataProtector);
+                this.UserTokenProvider =
+                    new DataProtectorTokenProvider<ApplicationUser>(dataProtectionProvider.Create("ASP.NET Identity"));
             }
         }
     }

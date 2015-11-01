@@ -17,6 +17,9 @@ namespace SuperChef.Web
 
             //Identity Database Initilizer
             Database.SetInitializer(new AppIdentityDbInitializer());
+
+            //Autofac and Automapper configuration
+            Bootstrapper.Run();
         }
     }
 }
