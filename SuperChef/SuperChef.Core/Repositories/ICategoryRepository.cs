@@ -6,6 +6,5 @@ namespace SuperChef.Core.Repositories
     public interface ICategoryRepository : IRepository<Category, int>
     {
         Category FindByName(string categoryName);
-        Task<Category> FindByNameAsync(string categoryName);
     }
 }

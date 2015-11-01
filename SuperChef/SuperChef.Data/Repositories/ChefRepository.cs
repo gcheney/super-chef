@@ -1,5 +1,4 @@
-﻿using System;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 using SuperChef.Core.Entities;
@@ -20,19 +19,9 @@ namespace SuperChef.Data.Repositories
             return Set.SingleOrDefault(c => c.Name == chefName);
         }
 
-        public Task<Chef> FindByNameAsync(string chefName)
-        {
-            return Set.SingleOrDefaultAsync(c => c.Name== chefName);
-        }
-
         public Chef FindByUserId(string userId)
         {
             return Set.SingleOrDefault(c => c.UserId == userId);
-        }
-
-        public Task<Chef> FindByUserIdAsync(string userId)
-        {
-            return Set.SingleOrDefaultAsync(c => c.UserId == userId);
         }
     }
 }

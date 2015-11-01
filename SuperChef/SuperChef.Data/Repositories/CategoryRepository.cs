@@ -18,10 +18,5 @@ namespace SuperChef.Data.Repositories
         {
             return Set.FirstOrDefault(c => c.Name == categoryName);
         }
-
-        public Task<Category> FindByNameAsync(string categoryName)
-        {
-            return Set.FirstOrDefaultAsync(c => c.Name == categoryName);
-        }
     }
 }

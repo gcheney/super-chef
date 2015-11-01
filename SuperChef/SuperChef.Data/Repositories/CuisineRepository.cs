@@ -18,11 +18,6 @@ namespace SuperChef.Data.Repositories
         {
             return Set.FirstOrDefault(c => c.Name == cuisineName);
         }
-
-        public Task<Cuisine> FindByNameAsync(string cuisineName)
-        {
-            return Set.FirstOrDefaultAsync(c => c.Name == cuisineName);
-        }
     }
 }
 
