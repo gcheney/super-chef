@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Data.Entity;
 using System.Diagnostics.Contracts;
 using System.Threading.Tasks;
 using SuperChef.Core;
@@ -9,22 +8,28 @@ namespace SuperChef.Data
 {
     public class UnitOfWork : IUnitOfWork
     {
-        private readonly DbContext _context;
+        private AppDbContext _context;
+        private readonly IDbFactory _dbFactory;
 
         public UnitOfWork(IDbFactory dbFactory)
         {
             Contract.Requires<ArgumentNullException>(dbFactory != null);
-            _context = dbFactory.GetContext();
+            _dbFactory = dbFactory;
+        }
+
+        protected AppDbContext Context
+        {
+            get { return _context ?? (_context = _dbFactory.GetContext()); }
         }
 
         public void Commit()
         {
-            _context.SaveChanges();
+            Context.SaveChanges();
         }
 
-        public Task<int> CommitAsync()
+        public async Task<int> CommitAsync()
         {
-            return _context.SaveChangesAsync();
+            return await Context.SaveChangesAsync();
         }
     }
 }

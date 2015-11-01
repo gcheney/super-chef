@@ -57,8 +57,10 @@
     <Compile Include="Configurations\CuisineConfiguration.cs" />
     <Compile Include="Configurations\RecipeConfiguration.cs" />
     <Compile Include="Configurations\RecipeImageConfiguration.cs" />
+    <Compile Include="Infrastructure\ConnectionFactory.cs" />
     <Compile Include="Infrastructure\DbFactory.cs" />
     <Compile Include="Infrastructure\Disposable.cs" />
+    <Compile Include="Infrastructure\IConnectionFactory.cs" />
     <Compile Include="Infrastructure\IDbFactory.cs" />
     <Compile Include="Migrations\201510272122477_Initial.cs" />
     <Compile Include="Migrations\201510272122477_Initial.Designer.cs">

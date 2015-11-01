@@ -1,10 +1,7 @@
-﻿using System;
-using System.Data.Entity;
-
-
+﻿
 namespace SuperChef.Data.Infrastructure
 {
-    public interface IDbFactory : IDisposable
+    public interface IDbFactory
     {
         AppDbContext GetContext();
     }

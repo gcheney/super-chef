@@ -3,25 +3,24 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 using SuperChef.Core.Entities;
+using System.Linq;
 
 namespace SuperChef.Core.Repositories
 {
-    public interface IRepository<TEntity, in TKey> where  TEntity : IEntity<TKey>
+    public interface IRepository<TEntity, in TKey> where TEntity : IEntity<TKey>
     {
-        List<TEntity> GetAll();
-        Task<List<TEntity>> GetAllAsync();
+        IEnumerable<TEntity> GetAll();
 
-        List<TEntity> FindAll(Expression<Func<TEntity, bool>> expression);
-        Task<List<TEntity>> FindAllAsync(Expression<Func<TEntity, bool>> expression);
+        IEnumerable<TEntity> GetMany(
+            Expression<Func<TEntity, bool>> filter,
+            Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy,
+            string includeProperties);
 
-        List<TEntity> PageAll(int skip, int take);
-        Task<List<TEntity>> PageAllAsync(int skip, int take);
-
-        TEntity FindById(TKey id);
-        Task<TEntity> FindByIdAsync(TKey id);
+        TEntity GetById(TKey id);
 
         void Insert(TEntity entity);
         void Update(TEntity entity);
+        void Delete(TKey id);
         void Delete(TEntity entity);
     }
 }

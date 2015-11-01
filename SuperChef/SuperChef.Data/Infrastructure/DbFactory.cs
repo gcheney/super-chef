@@ -5,9 +5,15 @@ namespace SuperChef.Data.Infrastructure
     {
         private AppDbContext _context;
 
+        public DbFactory(IConnectionFactory connectionFactory)
+        {
+            var connectionString = connectionFactory.GetConnectionString();
+            _context = new AppDbContext(connectionString);
+        }
+
         public AppDbContext GetContext()
         {
-            return _context ?? (_context = new AppDbContext("SuperChef"));
+            return _context;
         }
 
         protected override void DisposeCore()

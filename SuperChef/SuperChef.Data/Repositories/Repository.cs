@@ -17,60 +17,61 @@ namespace SuperChef.Data.Repositories
         where TEntity : class, IEntity<TKey>
     {
         private AppDbContext _context;
-        private DbSet<TEntity> _set;
+        private IDbSet<TEntity> _dbSet;
+        private readonly IDbFactory _dbFactory;
 
-        protected DbSet<TEntity> Set
+        protected AppDbContext Context
         {
-            get { return _set ?? (_set = _context.Set<TEntity>()); }
+            get { return _context ?? (_context = _dbFactory.GetContext()); }
+        }
+
+        protected IDbSet<TEntity> Set
+        {
+            get { return _dbSet ?? (_dbSet = Context.Set<TEntity>()); }
         }
 
         public Repository(IDbFactory dbFactory)
         {
             Contract.Requires<ArgumentNullException>(dbFactory != null);
-            _context = dbFactory.GetContext();
+            _dbFactory = dbFactory;
         }
 
-        #region Multiple Results methods
-        public virtual List<TEntity> GetAll()
+        public virtual IEnumerable<TEntity> GetAll()
         {
             return Set.ToList();
         }
 
-        public virtual Task<List<TEntity>> GetAllAsync()
+        public virtual IEnumerable<TEntity> GetMany(
+            Expression<Func<TEntity, bool>> filter = null,
+            Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
+            string includeProperties = "")
         {
-            return Set.ToListAsync();
+            IQueryable<TEntity> query = Set;
+
+            if (filter != null)
+            {
+                query = query.Where(filter);
+            }
+
+            foreach (var includeProperty in includeProperties.Split
+                (new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
+            {
+                query = query.Include(includeProperty);
+            }
+
+            if (orderBy != null)
+            {
+                return orderBy(query).ToList();
+            }
+            else
+            {
+                return query.ToList();
+            }
         }
 
-        public virtual List<TEntity> FindAll(Expression<Func<TEntity, bool>> expression)
-        {
-            return Set.Where(expression).ToList();
-        }
-
-        public virtual Task<List<TEntity>> FindAllAsync(Expression<Func<TEntity, bool>> expression)
-        {
-            return Set.Where(expression).ToListAsync();
-        }
-
-        public List<TEntity> PageAll(int skip, int take)
-        {
-            return Set.Skip(skip).Take(take).ToList();
-        }
-
-        public Task<List<TEntity>> PageAllAsync(int skip, int take)
-        {
-            return Set.Skip(skip).Take(take).ToListAsync();
-        }
-        #endregion
-
-        #region CRUD operations
-        public virtual TEntity FindById(TKey id)
+        public virtual TEntity GetById(TKey id)
         {
             return Set.Find(id);
-        }
-
-        public virtual Task<TEntity> FindByIdAsync(TKey id)
-        {
-            return Set.FindAsync(id);
         }
 
         public virtual void Insert(TEntity entity)
@@ -78,21 +79,25 @@ namespace SuperChef.Data.Repositories
             Set.Add(entity);
         }
 
-        public virtual void Update(TEntity entity)
+        public virtual void Update(TEntity entityToUpdate)
         {
-            var entry = _context.Entry(entity);
-            if (entry.State == EntityState.Detached)
-            {
-                Set.Attach(entity);
-                entry = _context.Entry(entity);
-            }
-            entry.State = EntityState.Modified;
+            Set.Attach(entityToUpdate);
+            Context.Entry(entityToUpdate).State = EntityState.Modified;
         }
 
-        public virtual void Delete(TEntity entity)
+        public virtual void Delete(TKey id)
         {
-            Set.Remove(entity);
+            TEntity entityToDelete = Set.Find(id);
+            Delete(entityToDelete);
         }
-        #endregion
+
+        public virtual void Delete(TEntity entityToDelete)
+        {
+            if (Context.Entry(entityToDelete).State == EntityState.Detached)
+            {
+                Set.Attach(entityToDelete);
+            }
+            Set.Remove(entityToDelete);
+        }
     }
 }

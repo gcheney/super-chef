@@ -13,13 +13,13 @@ namespace SuperChef.Data
                 new MigrateDatabaseToLatestVersion<AppDbContext, Configuration>());
         }
 
-        public DbSet<Recipe> Recipes { get; set; }
-        public DbSet<Chef> Chefs { get; set; }
-        public DbSet<Category> Categories { get; set; }
-        public DbSet<Cuisine> Cuisines { get; set; }
-        public DbSet<Comment> Comments { get; set; }
-        public DbSet<Avatar> AvatarImages { get; set; }
-        public DbSet<RecipeImage> RecipeImages { get; set; }
+        public IDbSet<Recipe> Recipes { get; set; }
+        public IDbSet<Chef> Chefs { get; set; }
+        public IDbSet<Category> Categories { get; set; }
+        public IDbSet<Cuisine> Cuisines { get; set; }
+        public IDbSet<Comment> Comments { get; set; }
+        public IDbSet<Avatar> AvatarImages { get; set; }
+        public IDbSet<RecipeImage> RecipeImages { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
