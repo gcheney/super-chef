@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
-using System.Threading.Tasks;
 using SuperChef.Core.Entities;
 using System.Linq;
 
@@ -15,6 +14,8 @@ namespace SuperChef.Core.Repositories
             Expression<Func<TEntity, bool>> filter,
             Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy,
             string includeProperties);
+
+        IEnumerable<TEntity> PageAll(int skip, int take);
 
         TEntity GetById(TKey id);
 

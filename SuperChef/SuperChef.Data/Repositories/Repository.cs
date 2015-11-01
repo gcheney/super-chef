@@ -69,6 +69,11 @@ namespace SuperChef.Data.Repositories
             }
         }
 
+        public virtual IEnumerable<TEntity> PageAll(int skip, int take)
+        {
+            return Set.Skip(skip).Take(take).ToList();
+        }
+
         public virtual TEntity GetById(TKey id)
         {
             return Set.Find(id);
