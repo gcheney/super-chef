@@ -1,6 +1,4 @@
-﻿using System.Data.Entity;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using SuperChef.Core.Entities;
 using SuperChef.Core.Repositories;
 using SuperChef.Data.Infrastructure;
