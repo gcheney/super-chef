@@ -81,7 +81,7 @@
     <Compile Include="Repositories\RecipeImageRepository.cs" />
     <Compile Include="Repositories\RecipeRepository.cs" />
     <Compile Include="Repositories\Repository.cs" />
-    <Compile Include="Infrastructure\UnitOfWork.cs" />
+    <Compile Include="Repositories\UnitOfWork.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

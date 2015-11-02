@@ -1,11 +1,9 @@
 ﻿using SuperChef.Core.Services;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using SuperChef.Core.Entities;
 using System.Linq.Expressions;
 using SuperChef.Core.Repositories;
-using SuperChef.Core.Infrastructure;
 
 namespace SuperChef.Services
 {

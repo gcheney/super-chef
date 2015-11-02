@@ -1,7 +1,8 @@
-﻿using SuperChef.Core.Infrastructure;
+﻿using SuperChef.Core.Repositories;
+using SuperChef.Data.Infrastructure;
 using System;
 
-namespace SuperChef.Data.Infrastructure
+namespace SuperChef.Data.Repositories
 {
     public class UnitOfWork : IUnitOfWork
     {

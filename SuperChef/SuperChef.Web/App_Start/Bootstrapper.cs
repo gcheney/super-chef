@@ -6,12 +6,12 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.DataProtection;
+using SuperChef.Core.Repositories;
 using SuperChef.Data.Infrastructure;
 using SuperChef.Data.Repositories;
 using SuperChef.Web.Identity.Data;
 using SuperChef.Web.Identity.Models;
 using SuperChef.Services;
-using SuperChef.Core.Infrastructure;
 
 namespace SuperChef.Web
 {
