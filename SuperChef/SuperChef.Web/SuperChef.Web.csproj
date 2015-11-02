@@ -189,8 +189,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Identity\Data\IdentityDb.cs" />
-    <Compile Include="Identity\Data\IdentityDbInitializer.cs" />
+    <Compile Include="Identity.Data.Migrations\201511021802322_Initial.cs" />
+    <Compile Include="Identity.Data.Migrations\201511021802322_Initial.Designer.cs">
+      <DependentUpon>201511021802322_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Identity\Data\Migrations\Configuration.cs" />
+    <Compile Include="Identity\Data\IdentityContext.cs" />
+    <Compile Include="Identity\Data\Migrations\MigrationsContextFactory.cs" />
     <Compile Include="Identity\Models\ApplicationSignInManager.cs" />
     <Compile Include="Identity\Models\ApplicationUser.cs" />
     <Compile Include="Identity\Models\ApplicationUserManager.cs" />
@@ -285,6 +290,11 @@
       <Project>{4e566ee7-3fc7-4355-85ae-00c6f5165762}</Project>
       <Name>SuperChef.Services</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Identity.Data.Migrations\201511021802322_Initial.resx">
+      <DependentUpon>201511021802322_Initial.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

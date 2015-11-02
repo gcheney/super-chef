@@ -1,21 +1,27 @@
-﻿using System.Linq;
-using Microsoft.AspNet.Identity.EntityFramework;
-using Microsoft.AspNet.Identity;
-using SuperChef.Web.Identity.Models;
-
-namespace SuperChef.Web.Identity.Data
+namespace SuperChef.Web.Identity.Data.Migrations
 {
-    public class IdentityDbInitializer 
-        : System.Data.Entity.DropCreateDatabaseAlways<IdentityDb>
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.EntityFramework;
+    using SuperChef.Web.Identity.Models;
+    using System.Data.Entity.Migrations;
+    using System.Linq;
+
+    internal sealed class Configuration : DbMigrationsConfiguration<IdentityContext>
     {
-        protected override void Seed(IdentityDb context)
+        public Configuration()
+        {
+            AutomaticMigrationsEnabled = false;
+            MigrationsDirectory = @"Identity.Data.Migrations";
+        }
+
+        protected override void Seed(IdentityContext context)
         {
             CreateAdminUser(context);
             CreateNonAdminUser(context);
             base.Seed(context);
         }
 
-        private void CreateAdminUser(IdentityDb context)
+        private void CreateAdminUser(IdentityContext context)
         {
             var roleResult = new IdentityResult();
             var userResult = new IdentityResult();
@@ -54,7 +60,7 @@ namespace SuperChef.Web.Identity.Data
             }
         }
 
-        private void CreateNonAdminUser(IdentityDb context)
+        private void CreateNonAdminUser(IdentityContext context)
         {
             if (!context.Users.Any(u => u.Email == "regular@test.com"))
             {

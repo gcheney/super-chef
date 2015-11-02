@@ -13,11 +13,11 @@ namespace SuperChef.Web.Modules
     {
         protected override void Load(ContainerBuilder builder)
         {
-            builder.RegisterType<IdentityDb>().AsSelf().InstancePerRequest();
+            builder.RegisterType<IdentityContext>().AsSelf().InstancePerRequest();
             builder.RegisterType<ApplicationUserManager>().AsSelf().InstancePerRequest();
             builder.RegisterType<ApplicationSignInManager>().AsSelf().InstancePerRequest();
 
-            builder.Register(c => new UserStore<ApplicationUser>(c.Resolve<IdentityDb>()))
+            builder.Register(c => new UserStore<ApplicationUser>(c.Resolve<IdentityContext>()))
                 .AsImplementedInterfaces().InstancePerRequest();
 
             builder.Register(c => HttpContext.Current.GetOwinContext().Authentication)
