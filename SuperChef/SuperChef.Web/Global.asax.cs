@@ -16,7 +16,7 @@ namespace SuperChef.Web
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             //Identity Database Initilizer
-            Database.SetInitializer(new AppIdentityDbInitializer());
+            Database.SetInitializer(new IdentityDbInitializer());
 
             //Autofac and Automapper configuration
             Bootstrapper.Run();

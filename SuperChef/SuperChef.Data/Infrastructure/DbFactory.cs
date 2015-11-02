@@ -6,23 +6,18 @@ namespace SuperChef.Data.Infrastructure
 {
     public class DbFactory : Disposable, IDbFactory
     {
-        private AppDbContext _context;
+        private ApplicationDbContext _context;
 
         public DbFactory(IConnectionFactory connectionFactory)
         {
             Contract.Requires<ArgumentNullException>(connectionFactory != null,
-                "connectionFactory cannot be null");
-
-            //if (connectionFactory == null)
-            //{
-            //    throw new ArgumentNullException("connectionFactory");
-            //}
+                "The connectionFactory cannot be null");
 
             var connectionString = connectionFactory.GetConnectionString();
-            _context = new AppDbContext(connectionString);
+            _context = new ApplicationDbContext(connectionString);
         }
 
-        public AppDbContext GetContext()
+        public ApplicationDbContext GetContext()
         {
             return _context;
         }

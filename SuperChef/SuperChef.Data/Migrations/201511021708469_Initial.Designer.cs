@@ -7,13 +7,13 @@ namespace SuperChef.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class FirstUpdate : IMigrationMetadata
+    public sealed partial class Initial : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(FirstUpdate));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Initial));
         
         string IMigrationMetadata.Id
         {
-            get { return "201511012320387_FirstUpdate"; }
+            get { return "201511021708469_Initial"; }
         }
         
         string IMigrationMetadata.Source

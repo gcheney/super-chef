@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using SuperChef.Core.Entities;
 using System.Linq.Expressions;
 using SuperChef.Core.Repositories;
+using SuperChef.Core.Infrastructure;
 
 namespace SuperChef.Services
 {
@@ -51,17 +52,12 @@ namespace SuperChef.Services
         private void CreateChef(Chef chef)
         {
             _chefRepository.Add(chef);
-            SaveChef();
+            _unitOfWork.Commit();
         }
 
         public void RemoveChef(int id)
         {
             _chefRepository.Delete(id);
-        }
-
-        public void SaveChef()
-        {
-            _unitOfWork.Commit();
         }
     }
 }

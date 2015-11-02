@@ -1,5 +1,5 @@
 ﻿
-namespace SuperChef.Core.Repositories
+namespace SuperChef.Core.Infrastructure
 {
     public interface IUnitOfWork
     {

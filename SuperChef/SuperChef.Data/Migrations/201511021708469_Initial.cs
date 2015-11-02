@@ -8,7 +8,7 @@ namespace SuperChef.Data.Migrations
         public override void Up()
         {
             CreateTable(
-                "dbo.AvatarImages",
+                "dbo.Avatars",
                 c => new
                     {
                         AvatarImageId = c.Int(nullable: false),
@@ -111,7 +111,7 @@ namespace SuperChef.Data.Migrations
         
         public override void Down()
         {
-            DropForeignKey("dbo.AvatarImages", "AvatarImageId", "dbo.Chef");
+            DropForeignKey("dbo.Avatars", "AvatarImageId", "dbo.Chef");
             DropForeignKey("dbo.Recipe", "CreatedById", "dbo.Chef");
             DropForeignKey("dbo.Comment", "ChefId", "dbo.Chef");
             DropForeignKey("dbo.Comment", "RecipeId", "dbo.Recipe");
@@ -124,14 +124,14 @@ namespace SuperChef.Data.Migrations
             DropIndex("dbo.Recipe", new[] { "CategoryId" });
             DropIndex("dbo.Comment", new[] { "RecipeId" });
             DropIndex("dbo.Comment", new[] { "ChefId" });
-            DropIndex("dbo.AvatarImages", new[] { "AvatarImageId" });
+            DropIndex("dbo.Avatars", new[] { "AvatarImageId" });
             DropTable("dbo.RecipeImages");
             DropTable("dbo.Cuisine");
             DropTable("dbo.Category");
             DropTable("dbo.Recipe");
             DropTable("dbo.Comment");
             DropTable("dbo.Chef");
-            DropTable("dbo.AvatarImages");
+            DropTable("dbo.Avatars");
         }
     }
 }

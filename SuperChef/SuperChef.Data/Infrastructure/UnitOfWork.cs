@@ -1,27 +1,23 @@
-﻿using SuperChef.Core.Infrastructure;
-using SuperChef.Core.Repositories;
-using SuperChef.Data.Infrastructure;
-using System;
+﻿using System;
+using SuperChef.Core.Infrastructure;
 
-namespace SuperChef.Data.Repositories
+
+namespace SuperChef.Data.Infrastructure
 {
     public class UnitOfWork : IUnitOfWork
     {
-        private AppDbContext _context;
+        private ApplicationDbContext _context;
         private readonly IDbFactory _dbFactory;
 
         public UnitOfWork(IDbFactory dbFactory)
         {
             Contract.Requires<ArgumentNullException>(dbFactory != null,
                 "dbFactory cannot be null");
-            //if (dbFactory == null)
-            //{
-            //    throw new ArgumentNullException("dbFactory");
-            //}
+
             _dbFactory = dbFactory;
         }
 
-        protected AppDbContext Context
+        protected ApplicationDbContext Context
         {
             get { return _context ?? (_context = _dbFactory.GetContext()); }
         }

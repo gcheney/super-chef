@@ -12,7 +12,6 @@ namespace SuperChef.Core.Services
         IEnumerable<Chef> FindChefs(Expression<Func<Chef, bool>> filter);
         Chef GetChef(int id);
         void CreateChef(string userId, string userName);
-        void SaveChef();
         void RemoveChef(int id);
     }
 }

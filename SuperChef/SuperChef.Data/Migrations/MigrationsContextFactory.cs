@@ -2,11 +2,11 @@
 
 namespace SuperChef.Data.Migrations
 {
-    internal class MigrationsContextFactory : IDbContextFactory<AppDbContext>
+    internal class MigrationsContextFactory : IDbContextFactory<ApplicationDbContext>
     {
-        public AppDbContext Create()
+        public ApplicationDbContext Create()
         {
-            return new AppDbContext("SuperChef");
+            return new ApplicationDbContext("SuperChef");
         }
     }
 }

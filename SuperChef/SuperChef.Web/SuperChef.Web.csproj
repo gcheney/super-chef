@@ -189,14 +189,18 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Identity\Data\AppIdentityDbContext.cs" />
-    <Compile Include="Identity\Data\AppIdentityDbInitializer.cs" />
+    <Compile Include="Identity\Data\IdentityDb.cs" />
+    <Compile Include="Identity\Data\IdentityDbInitializer.cs" />
     <Compile Include="Identity\Models\ApplicationSignInManager.cs" />
     <Compile Include="Identity\Models\ApplicationUser.cs" />
     <Compile Include="Identity\Models\ApplicationUserManager.cs" />
     <Compile Include="Identity\Models\ApplicationUserValidator.cs" />
     <Compile Include="Identity\Services\EmailService.cs" />
     <Compile Include="Identity\Services\SmsService.cs" />
+    <Compile Include="Modules\IdentityModule.cs" />
+    <Compile Include="Modules\InfrastructureModule.cs" />
+    <Compile Include="Modules\RepositoryModule.cs" />
+    <Compile Include="Modules\ServiceModule.cs" />
     <Compile Include="ViewModels\AccountViewModels.cs" />
     <Compile Include="ViewModels\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

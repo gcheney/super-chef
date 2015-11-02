@@ -5,12 +5,12 @@ using SuperChef.Data.Migrations;
 
 namespace SuperChef.Data
 {
-    public class AppDbContext : DbContext
+    public class ApplicationDbContext : DbContext
     {
-        public AppDbContext(string connectionString) : base(connectionString)
+        public ApplicationDbContext(string connectionString) : base(connectionString)
         {
             Database.SetInitializer(
-                new MigrateDatabaseToLatestVersion<AppDbContext, Configuration>());
+                new MigrateDatabaseToLatestVersion<ApplicationDbContext, Configuration>());
         }
 
         public IDbSet<Recipe> Recipes { get; set; }

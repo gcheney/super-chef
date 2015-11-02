@@ -14,11 +14,11 @@ namespace SuperChef.Data.Repositories
     public abstract class Repository<TEntity, TKey> : IRepository<TEntity, TKey>
         where TEntity : class, IEntity<TKey>
     {
-        private AppDbContext _context;
+        private ApplicationDbContext _context;
         private IDbSet<TEntity> _dbSet;
         private readonly IDbFactory _dbFactory;
 
-        protected AppDbContext Context
+        protected ApplicationDbContext Context
         {
             get { return _context ?? (_context = _dbFactory.GetContext()); }
         }
@@ -32,10 +32,7 @@ namespace SuperChef.Data.Repositories
         {
             Contract.Requires<ArgumentNullException>(dbFactory != null, 
                 "dbFactory cannot be null");
-            //if (dbFactory == null)
-            //{
-            //    throw new ArgumentNullException("dbFactory");
-            //}
+
             _dbFactory = dbFactory;
         }
 
