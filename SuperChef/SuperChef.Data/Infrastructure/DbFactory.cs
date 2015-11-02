@@ -1,4 +1,5 @@
 ﻿
+using SuperChef.Core.Infrastructure;
 using System;
 
 namespace SuperChef.Data.Infrastructure
@@ -9,10 +10,14 @@ namespace SuperChef.Data.Infrastructure
 
         public DbFactory(IConnectionFactory connectionFactory)
         {
-            if (connectionFactory == null)
-            {
-                throw new ArgumentNullException("connectionFactory");
-            }
+            Contract.Requires<ArgumentNullException>(connectionFactory != null,
+                "connectionFactory cannot be null");
+
+            //if (connectionFactory == null)
+            //{
+            //    throw new ArgumentNullException("connectionFactory");
+            //}
+
             var connectionString = connectionFactory.GetConnectionString();
             _context = new AppDbContext(connectionString);
         }

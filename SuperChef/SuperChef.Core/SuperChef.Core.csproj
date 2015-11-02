@@ -50,6 +50,7 @@
     <Compile Include="Entities\Image.cs" />
     <Compile Include="Entities\Recipe.cs" />
     <Compile Include="Entities\RecipeImage.cs" />
+    <Compile Include="Infrastructure\Contract.cs" />
     <Compile Include="Repositories\IUnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\IAvatarRepository.cs" />
@@ -63,9 +64,7 @@
     <Compile Include="Services\IChefService.cs" />
     <Compile Include="Services\IRecipeService.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Infrastructure\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

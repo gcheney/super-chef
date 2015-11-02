@@ -1,4 +1,5 @@
-﻿using SuperChef.Core.Repositories;
+﻿using SuperChef.Core.Infrastructure;
+using SuperChef.Core.Repositories;
 using SuperChef.Data.Infrastructure;
 using System;
 
@@ -11,10 +12,12 @@ namespace SuperChef.Data.Repositories
 
         public UnitOfWork(IDbFactory dbFactory)
         {
-            if (dbFactory == null)
-            {
-                throw new ArgumentNullException("dbFactory");
-            }
+            Contract.Requires<ArgumentNullException>(dbFactory != null,
+                "dbFactory cannot be null");
+            //if (dbFactory == null)
+            //{
+            //    throw new ArgumentNullException("dbFactory");
+            //}
             _dbFactory = dbFactory;
         }
 

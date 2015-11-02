@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
-using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Linq.Expressions;
 
 using SuperChef.Core.Entities;
 using SuperChef.Core.Repositories;
 using SuperChef.Data.Infrastructure;
+using SuperChef.Core.Infrastructure;
 
 namespace SuperChef.Data.Repositories
 {
@@ -30,10 +30,12 @@ namespace SuperChef.Data.Repositories
 
         public Repository(IDbFactory dbFactory)
         {
-            if (dbFactory == null)
-            {
-                throw new ArgumentNullException("dbFactory");
-            }
+            Contract.Requires<ArgumentNullException>(dbFactory != null, 
+                "dbFactory cannot be null");
+            //if (dbFactory == null)
+            //{
+            //    throw new ArgumentNullException("dbFactory");
+            //}
             _dbFactory = dbFactory;
         }
 

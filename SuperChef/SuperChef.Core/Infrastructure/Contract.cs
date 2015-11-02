@@ -1,12 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace SuperChef.Core.Infrastructure
 {
     public class Contract
     {
+        public static void Requires<TException>(bool condition, string message = "") 
+            where TException : Exception, new()
+        {
+            if (!condition)
+            {
+                Debug.WriteLine(message);
+                throw new TException();
+            }
+        }
     }
 }
