@@ -66,10 +66,16 @@ namespace SuperChef.Web.Controllers
                 return View(model);
             }
 
+            //Attempt to find user by email, and sign in with user name 
+            var user = await UserManager.FindByEmailAsync(model.Email);
+            if (user == null)
+            {
+                ModelState.AddModelError("", "The user you requested could not be found");
+                return View(model);
+            }
+
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
-            var user = await UserManager.FindByEmailAsync(model.Email);
-
             var result = await SignInManager.PasswordSignInAsync(user.UserName, model.Password, 
                 model.RememberMe, shouldLockout: false);
 
@@ -80,8 +86,10 @@ namespace SuperChef.Web.Controllers
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
-                    return RedirectToAction("SendCode", new { ReturnUrl = returnUrl,
-                        RememberMe = model.RememberMe });
+                    return RedirectToAction("SendCode", "Account", new {
+                        ReturnUrl = returnUrl,
+                        RememberMe = model.RememberMe
+                    });
                 case SignInStatus.Failure:
                 default:
                     ModelState.AddModelError("", "Invalid login attempt");

@@ -3,8 +3,12 @@ namespace SuperChef.Web.Identity.Data.Migrations
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
     using SuperChef.Web.Identity.Models;
+    using System;
+    using System.Collections.Generic;
     using System.Data.Entity.Migrations;
+    using System.Diagnostics;
     using System.Linq;
+    using System.Text;
 
     internal sealed class Configuration : DbMigrationsConfiguration<IdentityContext>
     {
@@ -57,6 +61,10 @@ namespace SuperChef.Web.Identity.Data.Migrations
                 {
                     userManager.AddToRole(user.Id, roleName);
                 }
+                else
+                {
+                    LogIdentityValidationErrors(userResult.Errors);
+                }
             }
         }
 
@@ -68,11 +76,24 @@ namespace SuperChef.Web.Identity.Data.Migrations
                 var userManager = new UserManager<ApplicationUser>(userStore);
                 var user = new ApplicationUser
                 {
-                    UserName = "Joe Regular",
+                    UserName = "Joe_Regular",
                     Email = "regular@test.com"
                 };
 
-                userManager.Create(user, "!Password123");
+                var result = userManager.Create(user, "!Password123");
+                if (!result.Succeeded)
+                {
+                    LogIdentityValidationErrors(result.Errors);
+                }
+            }
+        }
+
+        private void LogIdentityValidationErrors(IEnumerable<string> errors)
+        {
+            Debug.WriteLine("The following validation errors accured: ");
+            foreach (var error in errors)
+            {
+                Debug.WriteLine(error);
             }
         }
     }

@@ -189,8 +189,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Identity.Data.Migrations\201511021802322_Initial.cs" />
-    <Compile Include="Identity.Data.Migrations\201511021802322_Initial.Designer.cs">
+    <Compile Include="Identity\Data\Migrations\201511021802322_Initial.cs" />
+    <Compile Include="Identity\Data\Migrations\201511021802322_Initial.Designer.cs">
       <DependentUpon>201511021802322_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Identity\Data\Migrations\Configuration.cs" />
@@ -292,7 +292,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Identity.Data.Migrations\201511021802322_Initial.resx">
+    <EmbeddedResource Include="Identity\Data\Migrations\201511021802322_Initial.resx">
       <DependentUpon>201511021802322_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
