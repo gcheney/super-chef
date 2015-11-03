@@ -1,7 +1,6 @@
 ﻿using System;
 using SuperChef.Core.Infrastructure;
 
-
 namespace SuperChef.Data.Infrastructure
 {
     public class UnitOfWork : IUnitOfWork
@@ -11,8 +10,10 @@ namespace SuperChef.Data.Infrastructure
 
         public UnitOfWork(IDbFactory dbFactory)
         {
-            Contract.Requires<ArgumentNullException>(dbFactory != null,
-                "dbFactory cannot be null");
+            if (dbFactory == null)
+            {
+                throw new ArgumentNullException("dbFactory");
+            }
 
             _dbFactory = dbFactory;
         }

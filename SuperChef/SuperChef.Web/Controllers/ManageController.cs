@@ -24,12 +24,12 @@ namespace SuperChef.Web.Controllers
             _authenticationManager = authenticationManager;
         }
 
-        public ApplicationSignInManager SignInManager
+        private ApplicationSignInManager SignInManager
         {
             get { return _signInManager; }
         }
 
-        public ApplicationUserManager UserManager
+        private ApplicationUserManager UserManager
         {
             get { return _userManager; }
         }

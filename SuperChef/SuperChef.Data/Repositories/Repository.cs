@@ -30,8 +30,10 @@ namespace SuperChef.Data.Repositories
 
         public Repository(IDbFactory dbFactory)
         {
-            Contract.Requires<ArgumentNullException>(dbFactory != null, 
-                "dbFactory cannot be null");
+            if (dbFactory == null)
+            {
+                throw new ArgumentNullException("dbFactory");
+            }
 
             _dbFactory = dbFactory;
         }

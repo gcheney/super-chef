@@ -16,6 +16,15 @@ namespace SuperChef.Services
         public ChefService(IChefRepository chefRepository,
             IUnitOfWork unitOfWork)
         {
+            if (chefRepository == null)
+            {
+                throw new ArgumentNullException("chefRepository");
+            }
+            if (unitOfWork == null)
+            {
+                throw new ArgumentNullException("unitOfWork");
+            }
+
             _chefRepository = chefRepository;
             _unitOfWork = unitOfWork;
         }

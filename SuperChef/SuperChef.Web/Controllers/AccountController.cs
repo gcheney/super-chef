@@ -30,12 +30,12 @@ namespace SuperChef.Web.Controllers
             _chefService = chefService;
         }
 
-        public ApplicationSignInManager SignInManager
+        private ApplicationSignInManager SignInManager
         {
             get { return _signInManager; }
         }
 
-        public ApplicationUserManager UserManager
+        private ApplicationUserManager UserManager
         {
             get { return _userManager; }
         }
@@ -47,6 +47,7 @@ namespace SuperChef.Web.Controllers
 
         //
         // GET: /Account/Login
+        [HttpGet]
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
