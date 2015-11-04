@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using SuperChef.Core.Entities;
 using SuperChef.Core.Repositories;
 using SuperChef.Data.Infrastructure;
@@ -12,9 +13,9 @@ namespace SuperChef.Data.Repositories
         {
         }
 
-        public Chef FindByName(string chefName)
+        public Chef FindByName(string userName)
         {
-            return Set.SingleOrDefault(c => c.Name == chefName);
+            return Set.SingleOrDefault(c => c.UserName == userName);
         }
 
         public Chef FindByUserId(string userId)

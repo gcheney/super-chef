@@ -51,7 +51,7 @@ namespace SuperChef.Services
         {
             Chef chefToCreate = new Chef
             {
-                Name = userName,
+                UserName = userName,
                 UserId = userId
             };
 

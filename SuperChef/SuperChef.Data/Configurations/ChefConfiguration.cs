@@ -15,7 +15,7 @@ namespace SuperChef.Data.Configurations
                 .HasColumnType("int")
                 .IsRequired();
 
-            Property(c => c.Name)
+            Property(c => c.UserName)
                 .HasColumnName("Name")
                 .HasColumnType("nvarchar")
                 .HasMaxLength(100)

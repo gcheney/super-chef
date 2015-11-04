@@ -63,12 +63,10 @@ namespace SuperChef.Data.Repositories
 
             if (orderBy != null)
             {
-                return orderBy(query).ToList();
+                query = orderBy(query);
             }
-            else
-            {
-                return query.ToList();
-            }
+
+            return query.ToList();
         }
 
         public virtual IEnumerable<TEntity> PageAll(int skip, int take)
