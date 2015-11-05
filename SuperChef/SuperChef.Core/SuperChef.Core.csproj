@@ -41,7 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\Avatar.cs" />
-    <Compile Include="Entities\Entity.cs" />
+    <Compile Include="Entities\BaseIntEntity.cs" />
     <Compile Include="Entities\Category.cs" />
     <Compile Include="Entities\Chef.cs" />
     <Compile Include="Entities\Comment.cs" />

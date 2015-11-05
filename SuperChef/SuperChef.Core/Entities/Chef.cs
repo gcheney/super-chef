@@ -2,7 +2,7 @@
 
 namespace SuperChef.Core.Entities
 {
-    public class Chef : Entity
+    public class Chef : IntEntity
     {
         public string UserName { get; set; }
         public string UserId { get; set; }

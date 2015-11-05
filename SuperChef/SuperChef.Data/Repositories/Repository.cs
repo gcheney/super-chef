@@ -16,16 +16,21 @@ namespace SuperChef.Data.Repositories
     {
         private ApplicationDbContext _context;
         private IDbSet<TEntity> _dbSet;
-        private readonly IDbFactory _dbFactory;
 
         protected ApplicationDbContext Context
         {
-            get { return _context ?? (_context = _dbFactory.GetContext()); }
+            get { return _context ?? (_context = DbFactory.GetContext()); }
         }
 
         protected IDbSet<TEntity> Set
         {
             get { return _dbSet ?? (_dbSet = Context.Set<TEntity>()); }
+        }
+
+        protected IDbFactory DbFactory
+        {
+            get;
+            private set;
         }
 
         public Repository(IDbFactory dbFactory)
@@ -35,7 +40,7 @@ namespace SuperChef.Data.Repositories
                 throw new ArgumentNullException("dbFactory");
             }
 
-            _dbFactory = dbFactory;
+            DbFactory = dbFactory;
         }
 
         public virtual IEnumerable<TEntity> GetAll()
@@ -67,11 +72,6 @@ namespace SuperChef.Data.Repositories
             }
 
             return query.ToList();
-        }
-
-        public virtual IEnumerable<TEntity> PageAll(int skip, int take)
-        {
-            return Set.Skip(skip).Take(take).ToList();
         }
 
         public virtual TEntity GetById(TKey id)

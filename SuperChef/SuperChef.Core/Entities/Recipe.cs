@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace SuperChef.Core.Entities
 {
-    public class Recipe : Entity
+    public class Recipe : IntEntity
     {
         #region Properties
         public string Name { get; set; }
