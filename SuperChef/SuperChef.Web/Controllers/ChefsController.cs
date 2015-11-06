@@ -3,7 +3,6 @@ using PagedList;
 using System.Net;
 using System.Web.Mvc;
 using System.Collections.Generic;
-using Microsoft.AspNet.Identity;
 using SuperChef.Core.Entities;
 using SuperChef.Core.Services;
 using SuperChef.Web.ViewModels;
@@ -25,13 +24,14 @@ namespace SuperChef.Web.Controllers
         [AllowAnonymous]
         public ViewResult Index(int? page)
         {
-            IEnumerable<Chef> chefs = _chefService.GetAllChefs();
+            int pageNumber = (page ?? 1);
 
+            IEnumerable<Chef> chefs = _chefService.GetAllChefs();
             IEnumerable<ChefIndexViewModel> model 
                 = Mapper.Map<IEnumerable<Chef>, IEnumerable<ChefIndexViewModel>>(chefs);
 
-            int pageNumber = (page ?? 1);
-            return View(model.ToPagedList(pageNumber, PageSize));
+            model = model.ToPagedList(pageNumber, PageSize);
+            return View(model);
         }
 
         [AllowAnonymous]
