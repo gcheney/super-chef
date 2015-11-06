@@ -198,10 +198,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Identity\Data\Migrations\201511021802322_Initial.cs" />
-    <Compile Include="Identity\Data\Migrations\201511021802322_Initial.Designer.cs">
-      <DependentUpon>201511021802322_Initial.cs</DependentUpon>
-    </Compile>
     <Compile Include="Identity\Data\Migrations\Configuration.cs" />
     <Compile Include="Identity\Data\IdentityContext.cs" />
     <Compile Include="Identity\Data\Migrations\MigrationsContextFactory.cs" />
@@ -216,8 +212,7 @@
     <Compile Include="Infrastructure\AutofacModules\RepositoryModule.cs" />
     <Compile Include="Infrastructure\AutofacModules\ServiceModule.cs" />
     <Compile Include="Infrastructure\Mappings\AutoMapperConfiguration.cs" />
-    <Compile Include="Infrastructure\Mappings\DomainToViewModelMappingProfile.cs" />
-    <Compile Include="Infrastructure\Mappings\ViewModelToDomainMappingProfile.cs" />
+    <Compile Include="Infrastructure\Mappings\ChefProfile.cs" />
     <Compile Include="ViewModels\AccountViewModels.cs" />
     <Compile Include="ViewModels\ChefViewModels.cs" />
     <Compile Include="ViewModels\ManageViewModels.cs" />
@@ -279,11 +274,11 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Chef\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Infrastructure\Validators\" />
-    <Folder Include="Views\Chef\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -305,11 +300,6 @@
       <Project>{4e566ee7-3fc7-4355-85ae-00c6f5165762}</Project>
       <Name>SuperChef.Services</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Identity\Data\Migrations\201511021802322_Initial.resx">
-      <DependentUpon>201511021802322_Initial.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

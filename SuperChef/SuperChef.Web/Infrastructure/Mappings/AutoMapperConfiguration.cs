@@ -6,10 +6,9 @@ namespace SuperChef.Web.Infrastructure.Mappings
     {
         public static void Configure()
         {
-            Mapper.Initialize(x =>
+            Mapper.Initialize(cfg =>
             {
-                x.AddProfile<DomainToViewModelMappingProfile>();
-                x.AddProfile<ViewModelToDomainMappingProfile>();
+                cfg.AddProfile<ChefProfile>();
             });
         }
 

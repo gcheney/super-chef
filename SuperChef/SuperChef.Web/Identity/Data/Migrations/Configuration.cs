@@ -1,14 +1,12 @@
 namespace SuperChef.Web.Identity.Data.Migrations
 {
+    using SuperChef.Web.Identity.Models;
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
-    using SuperChef.Web.Identity.Models;
-    using System;
     using System.Collections.Generic;
     using System.Data.Entity.Migrations;
     using System.Diagnostics;
     using System.Linq;
-    using System.Text;
 
     internal sealed class Configuration : DbMigrationsConfiguration<IdentityContext>
     {
@@ -20,33 +18,20 @@ namespace SuperChef.Web.Identity.Data.Migrations
 
         protected override void Seed(IdentityContext context)
         {
-            CreateAdminUser(context);
-            CreateNonAdminUser(context);
+            CreateUser("Admin", "admin@test.com", context, "Admin");
+            CreateUser("Paul McCartney", "paul@test.com", context);
+            CreateUser("John Lennon", "john@test.com", context);
+            CreateUser("George Harrison", "george@test.com", context);
+            CreateUser("Ringo Starr", "ringo@test.com", context);
             base.Seed(context);
         }
 
-        private void CreateAdminUser(IdentityContext context)
+        private void CreateUser(string userName, string userEmail, 
+            IdentityContext context, string roleName = "")
         {
-            var roleResult = new IdentityResult();
-            var userResult = new IdentityResult();
-            var roleName = "Administrator";
-            var userName = "admin";
-            var userEmail = "admin@test.com";
-
-            if (!context.Roles.Any(r => r.Name == roleName))
-            {
-                var roleStore = new RoleStore<IdentityRole>(context);
-                var roleManager = new RoleManager<IdentityRole>(roleStore);
-                var role = new IdentityRole
-                {
-                    Name = roleName
-                };
-
-                roleResult = roleManager.Create(role);
-            }
-
             if (!context.Users.Any(u => u.Email == userEmail))
             {
+                var userResult = new IdentityResult();
                 var userStore = new UserStore<ApplicationUser>(context);
                 var userManager = new UserManager<ApplicationUser>(userStore);
                 var user = new ApplicationUser
@@ -55,35 +40,37 @@ namespace SuperChef.Web.Identity.Data.Migrations
                     Email = userEmail
                 };
 
+                //All users have the same password - for testing
                 userResult = userManager.Create(user, "!Password123");
 
-                if (userResult.Succeeded && roleResult.Succeeded)
-                {
-                    userManager.AddToRole(user.Id, roleName);
-                }
-                else
+                if (!userResult.Succeeded)
                 {
                     LogIdentityValidationErrors(userResult.Errors);
                 }
-            }
-        }
 
-        private void CreateNonAdminUser(IdentityContext context)
-        {
-            if (!context.Users.Any(u => u.Email == "regular@test.com"))
-            {
-                var userStore = new UserStore<ApplicationUser>(context);
-                var userManager = new UserManager<ApplicationUser>(userStore);
-                var user = new ApplicationUser
+                if (!string.IsNullOrWhiteSpace(roleName))
                 {
-                    UserName = "Joe_Regular",
-                    Email = "regular@test.com"
-                };
+                    if (!context.Roles.Any(r => r.Name == roleName))
+                    {
+                        var roleResult = new IdentityResult();
+                        var roleStore = new RoleStore<IdentityRole>(context);
+                        var roleManager = new RoleManager<IdentityRole>(roleStore);
+                        var role = new IdentityRole
+                        {
+                            Name = roleName
+                        };
 
-                var result = userManager.Create(user, "!Password123");
-                if (!result.Succeeded)
-                {
-                    LogIdentityValidationErrors(result.Errors);
+                        roleResult = roleManager.Create(role);
+
+                        if (roleResult.Succeeded)
+                        {
+                            userManager.AddToRole(user.Id, roleName);
+                        }
+                        else
+                        {
+                            LogIdentityValidationErrors(roleResult.Errors);
+                        }
+                    }
                 }
             }
         }

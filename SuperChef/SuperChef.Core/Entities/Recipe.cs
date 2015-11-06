@@ -44,7 +44,6 @@ namespace SuperChef.Core.Entities
 
         #region Private Fields
         private List<string> _ingredients;
-
         public List<string> Ingredients
         {
             get { return _ingredients ?? (_ingredients = new List<string>()); }
@@ -52,7 +51,6 @@ namespace SuperChef.Core.Entities
         }
 
         private List<string> _directions;
-
         public List<string> Directions
         {
             get { return _directions ?? (_directions = new List<string>()); }

@@ -22,7 +22,7 @@ namespace SuperChef.Data.Configurations
                 .IsRequired();
 
             Property(c => c.UserName)
-                .HasColumnName("Name")
+                .HasColumnName("UserName")
                 .HasColumnType("nvarchar")
                 .HasMaxLength(100)
                 .IsRequired();

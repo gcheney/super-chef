@@ -60,10 +60,6 @@
     <Compile Include="Infrastructure\Disposable.cs" />
     <Compile Include="Infrastructure\IConnectionFactory.cs" />
     <Compile Include="Infrastructure\IDbFactory.cs" />
-    <Compile Include="Migrations\201511021805282_Initial.cs" />
-    <Compile Include="Migrations\201511021805282_Initial.Designer.cs">
-      <DependentUpon>201511021805282_Initial.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\MigrationsContextFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -84,11 +80,6 @@
       <Project>{1100ce04-ef9f-472b-bc73-deccbf76e077}</Project>
       <Name>SuperChef.Core</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201511021805282_Initial.resx">
-      <DependentUpon>201511021805282_Initial.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

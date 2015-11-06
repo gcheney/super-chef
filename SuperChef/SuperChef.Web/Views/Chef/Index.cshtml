@@ -1,0 +1,18 @@
+﻿@model IEnumerable<SuperChef.Web.ViewModels.ChefViewModel>
+
+@{
+    ViewBag.Title = "Chefs";
+}
+
+<h2>Chefs</h2>
+
+<div class="container">
+    <div class="jumbotron">
+
+        @foreach (var chef in Model)
+        {
+            @Html.DisplayFor(modelitem => chef.UserName)
+        }
+
+    </div>
+</div>
