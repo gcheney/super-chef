@@ -1,16 +1,14 @@
 ﻿using System.Data.Entity;
 using SuperChef.Core.Entities;
 using SuperChef.Data.Configurations;
-using SuperChef.Data.Migrations;
 
 namespace SuperChef.Data
 {
     public class SuperChefContext : DbContext
     {
-        public SuperChefContext(string connectionString) : base(connectionString)
+        public SuperChefContext(string connectionString) 
+            : base(connectionString)
         {
-            Database.SetInitializer(
-                new MigrateDatabaseToLatestVersion<SuperChefContext, Configuration>());
         }
 
         public IDbSet<Recipe> Recipes { get; set; }

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<SuperChef.Web.ViewModels.ChefViewModel>
+﻿@model IEnumerable<SuperChef.Web.ViewModels.ChefIndexViewModel>
 
 @{
     ViewBag.Title = "Chefs";
@@ -7,12 +7,23 @@
 <h2>Chefs</h2>
 
 <div class="container">
-    <div class="jumbotron">
-
-        @foreach (var chef in Model)
-        {
-            @Html.DisplayFor(modelitem => chef.UserName)
-        }
-
-    </div>
+    @foreach (var chef in Model)
+    {
+        <div class="panel">
+            <div class="panel-body">
+                <div class="media">
+                    <a class="pull-left" href="#">
+                        <img class="media-object" src="../../images/@chef.ImagePath" />
+                    </a>
+                    <div class="media-body">
+                        <h3 class="media-heading">
+                            @chef.UserName
+                        </h3>
+                        <p>Age: @chef.Age  Location: @chef.Location</p>
+                        <p>Speciality: @chef.Speciality</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
 </div>

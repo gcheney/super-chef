@@ -4,9 +4,9 @@ using SuperChef.Web.ViewModels;
 
 namespace SuperChef.Web.Infrastructure.Mappings
 {
-    public class ChefProfile : Profile
+    public class ChefMappingProfile : Profile
     {
-        public ChefProfile() : base("ChefProfile")
+        public ChefMappingProfile() : base("ChefProfile")
         {
         }
 

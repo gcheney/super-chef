@@ -50,8 +50,8 @@ namespace SuperChef.Data.Configurations
                 .HasMaxLength(2000)
                 .IsOptional();
 
-            Property(c => c.Image)
-                .HasColumnName("Image")
+            Property(c => c.ImagePath)
+                .HasColumnName("ImagePath")
                 .HasColumnType("nvarchar")
                 .IsMaxLength()
                 .IsOptional();

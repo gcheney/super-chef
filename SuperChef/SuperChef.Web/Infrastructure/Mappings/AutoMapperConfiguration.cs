@@ -8,7 +8,7 @@ namespace SuperChef.Web.Infrastructure.Mappings
         {
             Mapper.Initialize(cfg =>
             {
-                cfg.AddProfile<ChefProfile>();
+                cfg.AddProfile<ChefMappingProfile>();
             });
         }
 

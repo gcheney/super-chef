@@ -19,10 +19,10 @@ namespace SuperChef.Web.Identity.Data.Migrations
         protected override void Seed(IdentityContext context)
         {
             CreateUser("Admin", "admin@test.com", context, "Admin");
-            CreateUser("Paul McCartney", "paul@test.com", context);
-            CreateUser("John Lennon", "john@test.com", context);
-            CreateUser("George Harrison", "george@test.com", context);
-            CreateUser("Ringo Starr", "ringo@test.com", context);
+            CreateUser("KingRamsay", "gordon@test.com", context);
+            CreateUser("The_Puckinator", "wolfgang@test.com", context);
+            CreateUser("The_Big_O", "jamie@test.com", context);
+            CreateUser("RachRay", "rachel@test.com", context);
             base.Seed(context);
         }
 

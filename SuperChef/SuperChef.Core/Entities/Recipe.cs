@@ -14,7 +14,7 @@ namespace SuperChef.Core.Entities
         public int Upvotes { get; set; }
         public DateTime DateCreated { get; set; }
         public DateTime? DateEdited { get; set; }
-        public string Image { get; set; }
+        public string ImagePath { get; set; }
 
         public string CombinedIngredients
         {

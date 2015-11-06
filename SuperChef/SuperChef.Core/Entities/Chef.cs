@@ -10,7 +10,7 @@ namespace SuperChef.Core.Entities
         public int Age { get; set; }
         public string About { get; set; }
         public string Speciality { get; set; }
-        public string Image { get; set; }
+        public string ImagePath { get; set; }
 
         public virtual ICollection<Comment> Comments { get; set; }
         public virtual ICollection<Recipe> Recipes { get; set; }

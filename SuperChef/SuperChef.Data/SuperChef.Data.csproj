@@ -49,6 +49,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Migrations\201511060315068_Initial.cs" />
+    <Compile Include="Migrations\201511060315068_Initial.Designer.cs">
+      <DependentUpon>201511060315068_Initial.cs</DependentUpon>
+    </Compile>
     <Compile Include="SuperChefContext.cs" />
     <Compile Include="Configurations\CategoryConfiguration.cs" />
     <Compile Include="Configurations\ChefConfiguration.cs" />
@@ -80,6 +84,11 @@
       <Project>{1100ce04-ef9f-472b-bc73-deccbf76e077}</Project>
       <Name>SuperChef.Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201511060315068_Initial.resx">
+      <DependentUpon>201511060315068_Initial.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

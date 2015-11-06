@@ -9,6 +9,6 @@ namespace SuperChef.Web.ViewModels
         public string Location { get; set; }
         public int Age { get; set; }
         public string Speciality { get; set; }
-        public string Image { get; set; }
+        public string ImagePath { get; set; }
     }
 }

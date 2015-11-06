@@ -47,6 +47,12 @@ namespace SuperChef.Services
             return chef;
         }
 
+        public Chef GetChefByUserId(string userId)
+        {
+            var chef = _chefRepository.FindByUserId(userId);
+            return chef;
+        }
+
         public void CreateChef(string userId, string userName)
         {
             Chef chefToCreate = new Chef
