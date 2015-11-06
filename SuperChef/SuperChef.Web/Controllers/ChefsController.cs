@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using PagedList;
 using System.Net;
 using System.Web.Mvc;
 using System.Collections.Generic;
@@ -13,6 +14,7 @@ namespace SuperChef.Web.Controllers
     public class ChefsController : Controller
     {
         private readonly IChefService _chefService;
+        private const int PageSize = 3;
 
         public ChefsController(IChefService chefService)
         {
@@ -21,14 +23,15 @@ namespace SuperChef.Web.Controllers
 
         // GET: Chef
         [AllowAnonymous]
-        public ViewResult Index()
+        public ViewResult Index(int? page)
         {
             IEnumerable<Chef> chefs = _chefService.GetAllChefs();
 
             IEnumerable<ChefIndexViewModel> model 
                 = Mapper.Map<IEnumerable<Chef>, IEnumerable<ChefIndexViewModel>>(chefs);
 
-            return View(model);
+            int pageNumber = (page ?? 1);
+            return View(model.ToPagedList(pageNumber, PageSize));
         }
 
         [AllowAnonymous]

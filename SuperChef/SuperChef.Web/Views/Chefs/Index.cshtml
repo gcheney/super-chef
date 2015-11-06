@@ -1,4 +1,5 @@
-﻿@model IEnumerable<SuperChef.Web.ViewModels.ChefIndexViewModel>
+﻿@model PagedList.IPagedList<SuperChef.Web.ViewModels.ChefIndexViewModel>
+@using PagedList.Mvc;
 
 @{
     ViewBag.Title = "The Chefs";
@@ -14,23 +15,28 @@
 <h2>The Chefs</h2>
 
 <div class="container">
-    @foreach (var chef in Model)
+    @foreach (var item in Model)
     {
         <div class="panel">
             <div class="panel-body">
                 <div class="media">
-                    <a class="pull-left" href="@Url.Action("Details", new { @chef.UserName })">
-                        <img class="media-object" src="../../images/@chef.ImagePath" />
+                    <a class="pull-left" href="@Url.Action("Details", new { @item.UserName })">
+                        <img class="media-object" src="../../images/@item.ImagePath" />
                     </a>
                     <div class="media-body">
                         <h3 class="media-heading">
-                            @Html.ActionLink(@chef.UserName, "Details", new { @chef.UserName })
+                            @Html.ActionLink(@item.UserName, "Details", new { @item.UserName })
                         </h3>
-                        <p>Age: @chef.Age  Location: @chef.Location</p>
-                        <p>Speciality: @chef.Speciality</p>
+                        <p>Age: @item.Age  Location: @item.Location</p>
+                        <p>Speciality: @item.Speciality</p>
                     </div>
                 </div>
             </div>
         </div>
     }
 </div>
+
+<br />
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
