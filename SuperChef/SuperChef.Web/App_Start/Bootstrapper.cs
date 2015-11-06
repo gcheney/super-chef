@@ -2,7 +2,8 @@
 using System.Web.Mvc;
 using Autofac;
 using Autofac.Integration.Mvc;
-using SuperChef.Web.Infrastructure.Modules;
+using SuperChef.Web.Infrastructure.AutofacModules;
+using SuperChef.Web.Infrastructure.Mappings;
 
 namespace SuperChef.Web
 {
@@ -10,7 +11,11 @@ namespace SuperChef.Web
     {
         public static void Run()
         {
+            //Configure Autofac
             SetAutofacContainer();
+
+            //Configure AutoMapper
+            AutoMapperConfiguration.Configure();
         }
 
         public static void SetAutofacContainer()

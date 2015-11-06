@@ -2,7 +2,7 @@
 using SuperChef.Core.Infrastructure;
 using SuperChef.Data.Infrastructure;
 
-namespace SuperChef.Web.Infrastructure.Modules
+namespace SuperChef.Web.Infrastructure.AutofacModules
 {
     public class InfrastructureModule : Module
     {

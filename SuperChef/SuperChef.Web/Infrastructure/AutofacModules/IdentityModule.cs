@@ -7,7 +7,7 @@ using Microsoft.Owin.Security.DataProtection;
 using SuperChef.Web.Identity.Data;
 using SuperChef.Web.Identity.Models;
 
-namespace SuperChef.Web.Infrastructure.Modules
+namespace SuperChef.Web.Infrastructure.AutofacModules
 {
     public class IdentityModule : Module
     {

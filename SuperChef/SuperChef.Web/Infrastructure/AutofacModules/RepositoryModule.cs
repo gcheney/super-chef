@@ -2,7 +2,7 @@
 using System.Linq;
 using SuperChef.Data.Repositories;
 
-namespace SuperChef.Web.Infrastructure.Modules
+namespace SuperChef.Web.Infrastructure.AutofacModules
 {
     public class RepositoryModule : Module
     {
