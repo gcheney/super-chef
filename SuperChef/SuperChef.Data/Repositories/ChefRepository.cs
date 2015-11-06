@@ -6,7 +6,7 @@ using SuperChef.Data.Infrastructure;
 
 namespace SuperChef.Data.Repositories
 {
-    public class ChefRepository : Repository<Chef, int>, IChefRepository
+    public class ChefRepository : BaseRepository<Chef, int>, IChefRepository
     {
         public ChefRepository(IDbFactory dbFactory)
             : base(dbFactory)

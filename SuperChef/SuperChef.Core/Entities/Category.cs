@@ -2,7 +2,7 @@
 
 namespace SuperChef.Core.Entities
 {
-    public class Category : IntEntity
+    public class Category : IntBaseEntity
     {
         public string Name { get; set; }
         public string Description { get; set; }

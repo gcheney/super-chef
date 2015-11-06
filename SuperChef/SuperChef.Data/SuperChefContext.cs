@@ -5,12 +5,12 @@ using SuperChef.Data.Migrations;
 
 namespace SuperChef.Data
 {
-    public class ApplicationDbContext : DbContext
+    public class SuperChefContext : DbContext
     {
-        public ApplicationDbContext(string connectionString) : base(connectionString)
+        public SuperChefContext(string connectionString) : base(connectionString)
         {
             Database.SetInitializer(
-                new MigrateDatabaseToLatestVersion<ApplicationDbContext, Configuration>());
+                new MigrateDatabaseToLatestVersion<SuperChefContext, Configuration>());
         }
 
         public IDbSet<Recipe> Recipes { get; set; }
@@ -18,8 +18,6 @@ namespace SuperChef.Data
         public IDbSet<Category> Categories { get; set; }
         public IDbSet<Cuisine> Cuisines { get; set; }
         public IDbSet<Comment> Comments { get; set; }
-        public IDbSet<Avatar> AvatarImages { get; set; }
-        public IDbSet<RecipeImage> RecipeImages { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -28,8 +26,6 @@ namespace SuperChef.Data
             modelBuilder.Configurations.Add(new CommentConfiguration());
             modelBuilder.Configurations.Add(new ChefConfiguration());
             modelBuilder.Configurations.Add(new RecipeConfiguration());
-            modelBuilder.Configurations.Add(new AvatarImageConfiguration());
-            modelBuilder.Configurations.Add(new RecipeImageConfiguration());
         }
     }
 }

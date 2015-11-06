@@ -48,6 +48,13 @@ namespace SuperChef.Data.Configurations
             Property(r => r.Description)
                 .HasColumnName("Description")
                 .HasColumnType("nvarchar")
+                .IsMaxLength()
+                .IsOptional();
+
+            Property(r => r.Image)
+                .HasColumnName("Image")
+                .HasColumnType("nvarchar")
+                .IsMaxLength()
                 .IsOptional();
 
             Property(r => r.CombinedDirections)
@@ -80,10 +87,6 @@ namespace SuperChef.Data.Configurations
             HasMany(r => r.Comments)
                 .WithRequired(c => c.Recipe)
                 .HasForeignKey(c => c.RecipeId);
-
-            HasMany(r => r.RecipeImages)
-                .WithRequired(r => r.Recipe)
-                .HasForeignKey(r => r.RecipeId);
         }
     }
 }

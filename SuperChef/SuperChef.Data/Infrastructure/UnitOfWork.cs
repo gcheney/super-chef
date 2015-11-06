@@ -5,7 +5,7 @@ namespace SuperChef.Data.Infrastructure
 {
     public class UnitOfWork : IUnitOfWork
     {
-        private ApplicationDbContext _context;
+        private SuperChefContext _context;
         private readonly IDbFactory _dbFactory;
 
         public UnitOfWork(IDbFactory dbFactory)
@@ -18,7 +18,7 @@ namespace SuperChef.Data.Infrastructure
             _dbFactory = dbFactory;
         }
 
-        protected ApplicationDbContext Context
+        protected SuperChefContext Context
         {
             get { return _context ?? (_context = _dbFactory.GetContext()); }
         }

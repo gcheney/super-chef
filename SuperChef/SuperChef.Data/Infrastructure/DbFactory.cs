@@ -5,7 +5,7 @@ namespace SuperChef.Data.Infrastructure
 {
     public class DbFactory : Disposable, IDbFactory
     {
-        private ApplicationDbContext _context;
+        private SuperChefContext _context;
 
         public DbFactory(IConnectionFactory connectionFactory)
         {
@@ -15,10 +15,10 @@ namespace SuperChef.Data.Infrastructure
             }
 
             var connectionString = connectionFactory.GetConnectionString();
-            _context = new ApplicationDbContext(connectionString);
+            _context = new SuperChefContext(connectionString);
         }
 
-        public ApplicationDbContext GetContext()
+        public SuperChefContext GetContext()
         {
             return _context;
         }

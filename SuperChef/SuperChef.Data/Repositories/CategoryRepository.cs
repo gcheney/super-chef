@@ -5,7 +5,7 @@ using SuperChef.Data.Infrastructure;
 
 namespace SuperChef.Data.Repositories
 {
-    public class CategoryRepository : Repository<Category, int>, ICategoryRepository
+    public class CategoryRepository : BaseRepository<Category, int>, ICategoryRepository
     {
         public CategoryRepository(IDbFactory factory)
             : base(factory)
@@ -14,7 +14,7 @@ namespace SuperChef.Data.Repositories
 
         public Category FindByName(string categoryName)
         {
-            return Set.FirstOrDefault(c => c.Name == categoryName);
+            return Set.Where(c => c.Name == categoryName).FirstOrDefault();
         }
     }
 }

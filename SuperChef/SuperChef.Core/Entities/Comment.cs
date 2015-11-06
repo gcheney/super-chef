@@ -2,7 +2,7 @@
 
 namespace SuperChef.Core.Entities
 {
-    public class Comment : IntEntity
+    public class Comment : IntBaseEntity
     {
         public string Content { get; set; }
         public DateTime DatePosted { get; set; }

@@ -49,14 +49,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApplicationDbContext.cs" />
-    <Compile Include="Configurations\AvatarImageConfiguration.cs" />
+    <Compile Include="SuperChefContext.cs" />
     <Compile Include="Configurations\CategoryConfiguration.cs" />
     <Compile Include="Configurations\ChefConfiguration.cs" />
     <Compile Include="Configurations\CommentConfiguration.cs" />
     <Compile Include="Configurations\CuisineConfiguration.cs" />
     <Compile Include="Configurations\RecipeConfiguration.cs" />
-    <Compile Include="Configurations\RecipeImageConfiguration.cs" />
     <Compile Include="Infrastructure\ConnectionFactory.cs" />
     <Compile Include="Infrastructure\DbFactory.cs" />
     <Compile Include="Infrastructure\Disposable.cs" />
@@ -69,14 +67,12 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\MigrationsContextFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\AvatarRepository.cs" />
     <Compile Include="Repositories\CategoryRepository.cs" />
     <Compile Include="Repositories\ChefRepository.cs" />
     <Compile Include="Repositories\CommentRepository.cs" />
     <Compile Include="Repositories\CuisineRepository.cs" />
-    <Compile Include="Repositories\RecipeImageRepository.cs" />
     <Compile Include="Repositories\RecipeRepository.cs" />
-    <Compile Include="Repositories\Repository.cs" />
+    <Compile Include="Repositories\BaseRepository.cs" />
     <Compile Include="Infrastructure\UnitOfWork.cs" />
   </ItemGroup>
   <ItemGroup>

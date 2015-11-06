@@ -7,17 +7,16 @@ using System.Linq.Expressions;
 using SuperChef.Core.Entities;
 using SuperChef.Core.Repositories;
 using SuperChef.Data.Infrastructure;
-using SuperChef.Core.Infrastructure;
 
 namespace SuperChef.Data.Repositories
 {
-    public abstract class Repository<TEntity, TKey> : IRepository<TEntity, TKey>
+    public abstract class BaseRepository<TEntity, TKey> : IRepository<TEntity, TKey>
         where TEntity : class, IEntity<TKey>
     {
-        private ApplicationDbContext _context;
+        private SuperChefContext _context;
         private IDbSet<TEntity> _dbSet;
 
-        protected ApplicationDbContext Context
+        protected SuperChefContext Context
         {
             get { return _context ?? (_context = DbFactory.GetContext()); }
         }
@@ -33,7 +32,7 @@ namespace SuperChef.Data.Repositories
             private set;
         }
 
-        public Repository(IDbFactory dbFactory)
+        public BaseRepository(IDbFactory dbFactory)
         {
             if (dbFactory == null)
             {

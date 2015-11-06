@@ -2,7 +2,7 @@
 using System.Web.Mvc;
 using Autofac;
 using Autofac.Integration.Mvc;
-using SuperChef.Web.Modules;
+using SuperChef.Web.Infrastructure.Modules;
 
 namespace SuperChef.Web
 {

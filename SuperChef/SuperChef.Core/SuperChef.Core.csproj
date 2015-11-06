@@ -40,24 +40,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entities\Avatar.cs" />
-    <Compile Include="Entities\BaseIntEntity.cs" />
+    <Compile Include="Entities\IntBaseEntity.cs" />
     <Compile Include="Entities\Category.cs" />
     <Compile Include="Entities\Chef.cs" />
     <Compile Include="Entities\Comment.cs" />
     <Compile Include="Entities\Cuisine.cs" />
     <Compile Include="Entities\IEntity.cs" />
-    <Compile Include="Entities\Image.cs" />
     <Compile Include="Entities\Recipe.cs" />
-    <Compile Include="Entities\RecipeImage.cs" />
     <Compile Include="Infrastructure\IUnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\IAvatarRepository.cs" />
     <Compile Include="Repositories\ICategoryRepository.cs" />
     <Compile Include="Repositories\IChefRepository.cs" />
     <Compile Include="Repositories\ICommentRepository.cs" />
     <Compile Include="Repositories\ICuisineRepository.cs" />
-    <Compile Include="Repositories\IRecipeImageRepository.cs" />
     <Compile Include="Repositories\IRecipeRepository.cs" />
     <Compile Include="Repositories\IRepository.cs" />
     <Compile Include="Services\IChefService.cs" />

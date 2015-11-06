@@ -15,6 +15,12 @@ namespace SuperChef.Data.Configurations
                 .HasColumnType("int")
                 .IsRequired();
 
+            Property(c => c.UserId)
+                .HasColumnName("UserId")
+                .HasColumnType("nvarchar")
+                .IsMaxLength()
+                .IsRequired();
+
             Property(c => c.UserName)
                 .HasColumnName("Name")
                 .HasColumnType("nvarchar")
@@ -38,15 +44,17 @@ namespace SuperChef.Data.Configurations
                 .HasMaxLength(1000)
                 .IsOptional();
 
-            Property(c => c.UserId)
-                .HasColumnName("UserId")
+            Property(c => c.Speciality)
+                .HasColumnName("Speciality")
+                .HasColumnType("nvarchar")
+                .HasMaxLength(2000)
+                .IsOptional();
+
+            Property(c => c.Image)
+                .HasColumnName("Image")
                 .HasColumnType("nvarchar")
                 .IsMaxLength()
-                .IsRequired();
-
-            HasOptional(c => c.AvatarImage)
-                .WithRequired(a => a.Chef)
-                .WillCascadeOnDelete(true);
+                .IsOptional();
 
             HasMany(c => c.Recipes)
                 .WithRequired(r => r.CreatedBy)

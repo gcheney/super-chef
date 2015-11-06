@@ -4,7 +4,7 @@ using SuperChef.Data.Infrastructure;
 
 namespace SuperChef.Data.Repositories
 {
-    public class CommentRepository : Repository<Comment, int>, ICommentRepository
+    public class CommentRepository : BaseRepository<Comment, int>, ICommentRepository
     {
         public CommentRepository(IDbFactory dbFactory)
             : base(dbFactory)

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SuperChef.Data.Repositories
 {
-    public class RecipeRepository : Repository<Recipe, int>, IRecipeRepository
+    public class RecipeRepository : BaseRepository<Recipe, int>, IRecipeRepository
     {
         public RecipeRepository(IDbFactory dbFactory)
             : base(dbFactory)

@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace SuperChef.Core.Entities
 {
-    public class Recipe : IntEntity
+    public class Recipe : IntBaseEntity
     {
         #region Properties
         public string Name { get; set; }
@@ -14,6 +14,7 @@ namespace SuperChef.Core.Entities
         public int Upvotes { get; set; }
         public DateTime DateCreated { get; set; }
         public DateTime? DateEdited { get; set; }
+        public string Image { get; set; }
 
         public string CombinedIngredients
         {
@@ -39,7 +40,6 @@ namespace SuperChef.Core.Entities
         public virtual Chef CreatedBy { get; set; }
 
         public virtual ICollection<Comment> Comments { get; set; }
-        public virtual ICollection<RecipeImage> RecipeImages { get; set; }
         #endregion
 
         #region Private Fields
