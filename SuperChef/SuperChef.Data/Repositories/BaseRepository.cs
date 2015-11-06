@@ -39,7 +39,7 @@ namespace SuperChef.Data.Repositories
                 throw new ArgumentNullException("dbFactory");
             }
 
-            DbFactory = dbFactory;
+            this.DbFactory = dbFactory;
         }
 
         public virtual IEnumerable<TEntity> GetAll()

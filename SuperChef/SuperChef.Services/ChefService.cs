@@ -53,6 +53,12 @@ namespace SuperChef.Services
             return chef;
         }
 
+        public Chef GetChefByUserName(string userName)
+        {
+            var chef = _chefRepository.FindByName(userName);
+            return chef;
+        }
+
         public void CreateChef(string userId, string userName)
         {
             Chef chefToCreate = new Chef
@@ -67,6 +73,12 @@ namespace SuperChef.Services
         private void CreateChef(Chef chef)
         {
             _chefRepository.Add(chef);
+            _unitOfWork.Commit();
+        }
+
+        public void EditChef(Chef chef)
+        {
+            _chefRepository.Update(chef);
             _unitOfWork.Commit();
         }
 

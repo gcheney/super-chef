@@ -1,10 +1,17 @@
 ﻿@model IEnumerable<SuperChef.Web.ViewModels.ChefIndexViewModel>
 
 @{
-    ViewBag.Title = "Chefs";
+    ViewBag.Title = "The Chefs";
 }
 
-<h2>Chefs</h2>
+<br />
+@if (Request.IsAuthenticated)
+{
+    var userName = User.Identity.Name;
+    @Html.ActionLink("Edit Your Profile", "Edit", new { userName }, new { @class = "btn btn-primary" });
+}
+
+<h2>The Chefs</h2>
 
 <div class="container">
     @foreach (var chef in Model)
@@ -12,12 +19,12 @@
         <div class="panel">
             <div class="panel-body">
                 <div class="media">
-                    <a class="pull-left" href="#">
+                    <a class="pull-left" href="@Url.Action("Details", new { @chef.UserName })">
                         <img class="media-object" src="../../images/@chef.ImagePath" />
                     </a>
                     <div class="media-body">
                         <h3 class="media-heading">
-                            @chef.UserName
+                            @Html.ActionLink(@chef.UserName, "Details", new { @chef.UserName })
                         </h3>
                         <p>Age: @chef.Age  Location: @chef.Location</p>
                         <p>Speciality: @chef.Speciality</p>

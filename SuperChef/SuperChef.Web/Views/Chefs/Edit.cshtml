@@ -1,0 +1,16 @@
+﻿@model SuperChef.Web.ViewModels.ChefEditViewModel
+
+@{
+    ViewBag.Title = "Edit Profile";
+}
+
+<h2 class="jumbotron">Edit Your Profile</h2>
+
+
+@using (Html.BeginForm("Edit", "Chef", FormMethod.Post, new { @class = "form-control" }))
+{
+    @Html.AntiForgeryToken()
+    
+    <p class="form-group">@Html.DisplayNameFor(m => m.ChefName): @Model.ChefName</p>
+}
+

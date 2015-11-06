@@ -2,7 +2,7 @@
 using System.Web.Mvc;
 using Autofac;
 using Autofac.Integration.Mvc;
-using SuperChef.Web.Infrastructure.AutofacModules;
+using SuperChef.Web.Infrastructure.Modules;
 using SuperChef.Web.Infrastructure.Mappings;
 using AutoMapper;
 

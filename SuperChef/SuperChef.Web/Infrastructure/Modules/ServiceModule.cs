@@ -2,7 +2,7 @@
 using SuperChef.Services;
 using System.Linq;
 
-namespace SuperChef.Web.Infrastructure.AutofacModules
+namespace SuperChef.Web.Infrastructure.Modules
 {
     public class ServiceModule : Module
     {
