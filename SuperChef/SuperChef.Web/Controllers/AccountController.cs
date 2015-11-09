@@ -67,17 +67,22 @@ namespace SuperChef.Web.Controllers
                 return View(model);
             }
 
-            //Attempt to find user by email, and sign in with user name 
-            var user = await UserManager.FindByEmailAsync(model.LoginCredential);
+
+            //Check for user by UserName and Email 
+            ApplicationUser user = new ApplicationUser();
+            if (model.LoginCredential.ToLowerInvariant().Contains('@'))
+            {
+                user = await UserManager.FindByEmailAsync(model.LoginCredential);
+            }
+            else
+            {
+                user = await UserManager.FindByNameAsync(model.LoginCredential);
+            }
 
             if (user == null)
             {
-                user = await UserManager.FindByNameAsync(model.LoginCredential);
-                if (user == null)
-                {
-                    ModelState.AddModelError("", "The user you requested could not be found");
-                    return View(model);
-                }
+                ModelState.AddModelError("", "The user you requested could not be found");
+                return View(model);
             }
 
             // This doesn't count login failures towards account lockout

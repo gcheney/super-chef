@@ -20,11 +20,21 @@ namespace SuperChef.Web.Identity.Models
 
             if (_manager.FindByName(user.UserName) != null)
             {
-                var errors = result.Errors.ToList();
-                errors.Add("Please choose a different user name.");
-                result = new IdentityResult(errors);
+                result = AddIdentityError(result, "Please choose a different user name.");
+            }
+
+            if (user.UserName.Contains("@"))
+            {
+                result = AddIdentityError(result, "User names may not contain an @ symbol.");
             }
             return result;
+        }
+
+        private IdentityResult AddIdentityError(IdentityResult result, string errorMessage)
+        {
+            var errors = result.Errors.ToList();
+            errors.Add(errorMessage);
+            return new IdentityResult(errors);
         }
     }
 }
