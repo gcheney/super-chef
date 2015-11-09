@@ -49,9 +49,9 @@ namespace SuperChef.Web.ViewModels
     public class LoginViewModel
     {
         [Required]
-        [Display(Name = "Email")]
-        [EmailAddress]
-        public string Email { get; set; }
+        [Display(Name = "Username or email")]
+        //[EmailAddress]
+        public string LoginCredential { get; set; }
 
         [Required]
         [DataType(DataType.Password)]

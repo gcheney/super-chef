@@ -60,7 +60,7 @@ namespace SuperChef.Web.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
+        public async Task<ActionResult> Login(LoginViewModel model, string returnUrl = "/home/index")
         {
             if (!ModelState.IsValid)
             {
@@ -68,11 +68,16 @@ namespace SuperChef.Web.Controllers
             }
 
             //Attempt to find user by email, and sign in with user name 
-            var user = await UserManager.FindByEmailAsync(model.Email);
+            var user = await UserManager.FindByEmailAsync(model.LoginCredential);
+
             if (user == null)
             {
-                ModelState.AddModelError("", "The user you requested could not be found");
-                return View(model);
+                user = await UserManager.FindByNameAsync(model.LoginCredential);
+                if (user == null)
+                {
+                    ModelState.AddModelError("", "The user you requested could not be found");
+                    return View(model);
+                }
             }
 
             // This doesn't count login failures towards account lockout
@@ -83,7 +88,7 @@ namespace SuperChef.Web.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
+                    return RedirectToLocal(returnUrl);                   
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:

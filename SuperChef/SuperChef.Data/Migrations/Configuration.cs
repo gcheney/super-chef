@@ -20,7 +20,7 @@ namespace SuperChef.Data.Migrations
         {
             try
             {
-                CreateChefs().ForEach(c => context.Chefs.Add(c));
+                CreateChefs().ForEach(c => context.Chefs.AddOrUpdate(c));
                 base.Seed(context);
             }
             catch (DbEntityValidationException e)

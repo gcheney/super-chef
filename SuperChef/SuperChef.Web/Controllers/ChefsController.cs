@@ -20,7 +20,7 @@ namespace SuperChef.Web.Controllers
             _chefService = chefService;
         }
 
-        // GET: Chef
+        // GET: Chefs/
         [AllowAnonymous]
         public ViewResult Index(int? page)
         {
@@ -34,6 +34,7 @@ namespace SuperChef.Web.Controllers
             return View(model);
         }
 
+        // GET: Chefs/Details/userName
         [AllowAnonymous]
         public ActionResult Details(string userName)
         {
@@ -48,6 +49,7 @@ namespace SuperChef.Web.Controllers
             return View(model);
         }
 
+        // GET: Chefs/Edit/userName
         [HttpGet]
         public ActionResult Edit(string userName)
         {

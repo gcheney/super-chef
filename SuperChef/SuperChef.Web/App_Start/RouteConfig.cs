@@ -12,7 +12,7 @@ namespace SuperChef.Web
             routes.LowercaseUrls = true;
 
             routes.MapRoute(
-                name: "ByUserName",
+                name: "ChefByUserName",
                 url: "{controller}/{action}/{userName}",
                 defaults: new { controller = "Chefs", action = "Edit", userName = "" }
             );
