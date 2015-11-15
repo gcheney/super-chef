@@ -67,9 +67,8 @@ namespace SuperChef.Web.Controllers
                 return View(model);
             }
 
-
             //Check for user by UserName and Email 
-            ApplicationUser user = new ApplicationUser();
+            var user = new ApplicationUser();
             if (model.LoginCredential.ToLowerInvariant().Contains('@'))
             {
                 user = await UserManager.FindByEmailAsync(model.LoginCredential);
@@ -188,7 +187,6 @@ namespace SuperChef.Web.Controllers
 
                     //create a new chef
                     _chefService.CreateChef(user.Id, user.UserName);
-
                     return RedirectToAction("Index", "Home");
                 }
                 AddErrors(result);
